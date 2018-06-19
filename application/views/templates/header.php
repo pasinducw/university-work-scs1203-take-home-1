@@ -6,7 +6,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<meta charset="utf-8">
   <title>Welcome to CodeIgniter</title>
 
-  <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/bootstrap/css/cosmo.css') ?>" rel="stylesheet">
 </head>
 
 <body>
