@@ -1,0 +1,45 @@
+.heading1 {
+    text-align: center;
+}
+
+.sesction1 {
+    background-color: #f6f6f6;
+    padding: 3px 0 3px 10px;
+}
+
+.btn-cont1 {
+    text-align: right;
+}
+
+.profile-details-table {
+    margin: auto;
+    width: 70%
+}
+
+.profile-details-table tr td p {
+    margin: 0;
+    padding: 5px 0 5px 0;
+    background-color: #ececec;
+}
+
+.profile-details-table tr td:first-child {
+    font-size: 15px;
+    text-align: center;
+    width: 50%;
+    margin: 5px 0 5px 0;
+}
+
+.profile-details-table tr td:last-child {
+    /* font-weight: bold; */
+    font-size: 15px
+}
+
+.test {
+    background-color: aqua;
+    height: 300px;
+}
+
+.test2 {
+    background-color: blanchedalmond;
+    height: 300px;
+}
