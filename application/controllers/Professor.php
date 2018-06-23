@@ -20,7 +20,7 @@ class Professor extends CI_Controller
     {
         $data = array(
             'navigationData' => array(),
-            'view' => "pages/professor/profile/profileView",
+            'view' => "pages/common/profile/profileView",
             'viewData' => array() 
         );
 
