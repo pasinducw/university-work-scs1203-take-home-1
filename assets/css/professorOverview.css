@@ -1,0 +1,35 @@
+.heading1 {
+    text-align: center;
+}
+
+.sesction1 {
+    background-color: #f6f6f6;
+    padding: 3px 0 3px 10px;
+}
+
+.course-details p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.course-lab-details li p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.course-lab-details li ul {
+    margin-bottom: 5px
+}
+
+.course-textBook-details {
+    list-style: none;
+}
+
+.course-textBook-details li p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.myBook-details li p {
+    margin: 0
+}
