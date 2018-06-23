@@ -16,4 +16,18 @@ class Sample extends CI_Controller
         $this->load->view('templates/dashboard', $data);
     }
 
+    public function custom($role = 'admin')
+    {
+        $data = array();
+
+        $data['navigationData'] = array(
+            'navEntries' => getNavigationEntries($role),
+        );
+
+        $data['view'] = "pages/sample/sample";
+        $data['viewData'] = array();
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
 }
