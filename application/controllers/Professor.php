@@ -28,4 +28,29 @@ class Professor extends CI_Controller
 
     }
 
+    public function overview()
+    {
+        $data = array(
+            'navigationData' => array(),
+            'view' => "pages/professor/overview",
+            'viewData' => array() 
+        );
+
+        $this->load->view('templates/dashboard',$data);
+
+    }
+
+    public function assignGraduate()
+    {
+
+        $data = array(
+            'navigationData' => array(),
+            'view' => "pages/professor/assignGraduate",
+            'viewData' => array() 
+        );
+
+        $this->load->view('templates/dashboard',$data);
+
+    }
+
 }
