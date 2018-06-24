@@ -39,19 +39,34 @@ if (!function_exists('getNavigationEntries')) {
 
     function navigation_getProfessorNavs()
     {
-        $entries = array();
-
-        $entries['profile'] = array(
-            'name' => 'Profile',
-            'url' => base_url('professor/profile'),
-            'icon' => 'user',
+        $entries = array(
+            'overview' => array(
+                'name' => 'Overview',
+                'url' => base_url('professor/overview'),
+                'icon' => 'clipboard'
+            ),
+            'courseSections' => array(
+                'name' => 'Course Sections',
+                'url' => base_url('professor/courseSections'),
+                'icon' => 'award'
+            ),
+            'labSession' => array(
+                'name' => 'Lab Sections',
+                'url' => base_url('professor/labSessions'),
+                'icon' => 'grid'
+            ),
+            'textBooks' => array(
+                'name' => 'Text Books',
+                'url' => base_url('professor/textBooks'),
+                'icon' => 'book'
+            ),
+            'asignGrad' => array(
+                'name' => 'Assign Graduates For Lab &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sessions',
+                'url' => base_url('professor/assignGraduate'),
+                'icon' => 'git-branch'
+            )
         );
 
-        $entries['courses'] = array(
-            'name' => 'Available Courses',
-            'url' => base_url('professor/courses'),
-            'icon' => 'book',
-        );
         return $entries;
     }
 

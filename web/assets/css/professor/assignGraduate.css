@@ -1,3 +1,109 @@
 .heading1 {
     text-align: center;
 }
+
+.sesction1 {
+    background-color: #f6f6f6;
+    padding: 3px 0 3px 10px;
+}
+
+.post-grad-show-table {
+    width: 100%;
+}
+
+.post-grad-show-table thead {
+    background-color: rgb(12, 12, 12);
+    color: white;
+}
+
+.post-grad-show-table {
+    border: 1px solid rgb(12, 12, 12);
+}
+
+.post-grad-show-table thead tr th {
+    padding: 3px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.post-grad-show-table thead tr th:nth-child(1),
+.post-grad-show-table thead tr th:nth-child(2) {
+    border-right: 1px solid rgb(185, 185, 185);
+}
+
+.post-grad-show-table tbody tr td {
+    padding: 3px
+}
+
+.post-grad-show-table tbody tr td:nth-child(1),
+.post-grad-show-table tbody tr td:nth-child(2) {
+    text-align: center;
+    border-right: 1px solid rgb(185, 185, 185);
+}
+
+.post-grad-show-table tbody tr td:last-child {
+    padding: 3px 3px 3px 5px;
+}
+
+.post-grad-show-table tbody tr:nth-child(2n-1) {
+    background-color: rgb(235, 235, 235)
+}
+
+.custom-control-label {
+    cursor: pointer;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+    top: -14px;
+    left: -7px;
+}
+
+.student-asigned-lab-show-table {
+    width: 100%;
+    border: 1px solid rgb(12, 12, 12);
+}
+
+.student-asigned-lab-show-table thead {
+    background-color: rgb(12, 12, 12);
+    color: white;
+}
+
+.student-asigned-lab-show-table thead tr th {
+    padding: 3px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.student-asigned-lab-show-table thead tr th:not(:last-child) {
+    border-right: 1px solid rgb(185, 185, 185);
+    ;
+}
+
+.student-asigned-lab-show-table tbody tr td:not(:last-child) {
+    padding: 3px 3px 3px 5px;
+}
+
+.student-asigned-lab-show-table tbody tr td:last-child {
+    width: 60px
+}
+
+.student-asigned-lab-show-table tbody tr td:first-child {
+    text-align: center;
+}
+
+.student-asigned-lab-show-table tbody tr td:nth-child(1) {
+    width: 50px
+}
+
+.student-asigned-lab-show-table tbody tr td:nth-child(2) {
+    width: 250px
+}
+
+.student-asigned-lab-show-table tbody tr td:not(:last-child) {
+    border-right: 1px solid rgb(185, 185, 185);
+}
+
+.student-asigned-lab-show-table tbody tr:nth-child(2n) {
+    background-color: rgb(235, 235, 235)
+}

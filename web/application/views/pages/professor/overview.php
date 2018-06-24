@@ -20,8 +20,7 @@
                     <li><p>Course | Semester | Year</p></li>
                     <br>
                     <p>
-                        <button type="button" class="btn btn-secondary btn-sm"><i class="fa fa-plus"></i>&nbsp;Add Course Sections</button>
-                        <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Remove Course Sections</button>
+                        <a href="<?php echo $viewData['links']['change_course_section']; ?>" class="btn btn-secondary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i>&nbsp;Change Course Sections</a>
                     </p>
                 </ul>
             </div>
@@ -49,8 +48,7 @@
                     <li><p>Course | Semester | Year</p></li>
                     <br>
                     <p>
-                        <button type="button" class="btn btn-secondary btn-sm"><i class="fa fa-plus"></i>&nbsp;Add Lab Sections</button>
-                        <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Remove Lab Sections</button>
+                        <a href="<?php echo $viewData['links']['change_lab_sessions']; ?>" class="btn btn-secondary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i>&nbsp;Change Lab Sections</a>
                     </p>
                 </ul>
             </div>
@@ -78,8 +76,7 @@
                     <li><p>Book Name</p></li>
                     <br>
                     <p>
-                        <button type="button" class="btn btn-secondary btn-sm"><i class="fa fa-plus"></i>&nbsp;Add Books For Courses</button>
-                        <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Remove Books From Courses</button>
+                        <a href="<?php echo $viewData['links']['change_text_books']; ?>" class="btn btn-secondary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i>&nbsp;Change Books For Courses</a>
                     </p>
                 </ul>
             </div>
