@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/common/table.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/common/common.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/professor/courseSection.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/all.css') ?>">
 
@@ -106,6 +107,7 @@
                 </div>
             </div>
         </form>
+        <p class="error-text">Error</p>
 
         <br>
 

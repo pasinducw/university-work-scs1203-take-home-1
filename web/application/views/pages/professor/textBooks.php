@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/common/table.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/professor/textBook.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/common/common.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/all.css') ?>">
 
 <div style="padding-top:20px;padding-bottom:30px">
@@ -107,7 +108,7 @@
                     </p>
 
                 </form>
-
+                <p class="error-text">Error</p>
             </div>
             <div class="col-md-8">
                 <div>
