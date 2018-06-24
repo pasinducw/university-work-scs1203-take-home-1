@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/common/table.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/common/common.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/datetimepicker/fonts.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/common/bootstrap-datetimepicker.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/professor/labSessions.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/all.css') ?>">
 
@@ -160,3 +162,12 @@
     </form>
     <p class="error-text">Error</p>
 </div>
+<script src="<?php echo base_url('assets/jquery.js'); ?>"></script>
+<script src="<?php echo base_url('assets/moment-with-locales.js'); ?>"></script>
+<script src="<?php echo base_url('assets/bootstrap-datetimepicker.min.js'); ?>"></script>
+<script>
+    var time_inputs = $('#input-lab-session-end-time,#input-lab-session-start-time');
+    time_inputs.datetimepicker({
+        format: 'hh:mm'
+    });
+</script>
