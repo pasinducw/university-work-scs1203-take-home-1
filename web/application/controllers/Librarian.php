@@ -28,6 +28,36 @@ class Librarian extends CI_Controller
 
     }
 
+    public function borrowAndReturnBook(){
+        $data = array(
+            'navigationData' => getNavigationEntries('librarian'),
+            'view' => "pages/librarian/borrowAndReturnBook",
+            'viewData' => array()
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function returnBook(){
+        $data = array(
+            'navigationData' => getNavigationEntries('librarian'),
+            'view' => "pages/librarian/returnBook",
+            'viewData' => array()
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function book(){
+        $data = array(
+            'navigationData' => getNavigationEntries('librarian'),
+            'view' => "pages/librarian/book",
+            'viewData' => array()
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
     public function profile(){
         $data = array(
             'navigationData' => getNavigationEntries('librarian'),

@@ -1,0 +1,19 @@
+.heading1 {
+    text-align: center;
+}
+
+.sesction1 {
+    background-color: #f6f6f6;
+    padding: 3px 0 3px 10px;
+}
+
+#books-basic-detail-show-table,
+#books-not-returned-detail-show-table,
+#books-text-book-show-table {
+    text-align: center;
+}
+
+#books-basic-detail-show-table h5 {
+    margin: 0;
+    font-weight: normal;
+}

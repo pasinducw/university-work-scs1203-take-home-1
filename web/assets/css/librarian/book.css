@@ -1,0 +1,22 @@
+.heading1 {
+    text-align: center;
+}
+
+.sesction1 {
+    background-color: #f6f6f6;
+    padding: 3px 0 3px 10px;
+}
+
+#books-basic-detail-show-table {
+    text-align: center;
+}
+
+#add-book-prof-show-table {
+    text-align: center;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+    top: -14px;
+    left: -7px;
+}

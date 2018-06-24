@@ -1,0 +1,28 @@
+.heading1 {
+    text-align: center;
+}
+
+.sesction1 {
+    background-color: #f6f6f6;
+    padding: 3px 0 3px 10px;
+}
+
+#borrowed-books-detail-show-table .not-borrowed-on-time {
+    background-color: rgba(167, 0, 0, 0.808);
+    color: #f6f6f6;
+}
+
+#borrow-book-show-table {
+    text-align: center;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+    top: -14px;
+    left: -7px;
+}
+
+#borrow-book-show-table .not-available {
+    background-color: rgb(167, 0, 0);
+    color: #f6f6f6;
+}
