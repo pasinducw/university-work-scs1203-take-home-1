@@ -18,15 +18,14 @@ class CreateLabSessionsTable extends Migration
             $table->string('section_id')->nullable(false);
             $table->unsignedInteger('semester')->nullable(false);
             $table->unsignedInteger('year')->nullable(false);
-            $table->unsignedInteger('lab_session_id')->nullable(false);
+            $table->string('topic');
             $table->string('conductor_id')->nullable(true);
 
-            $table->string('topic');
             $table->time('start_time');
             $table->time('end_time');
             $table->string('location');
 
-            $table->primary(['course_id', 'section_id', 'semester', 'year', 'lab_session_id'], 'pk_lab_sessions');
+            $table->primary(['course_id', 'section_id', 'semester', 'year', 'topic'], 'pk_lab_sessions');
             $table->foreign(['course_id', 'section_id', 'semester', 'year'], 'fk_lab_sessions_to_sections')
                 ->references(['course_id', 'section_id', 'semester', 'year'])
                 ->on('sections')

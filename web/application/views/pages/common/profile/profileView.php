@@ -8,28 +8,27 @@
     <div class="container-fluid">
 
         <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Basic Details</p>
-
         <table class="profile-details-table">
             <tbody>
                 <tr>
-                    <td><p>User ID</p></td>
+                    <td><p>Username</p></td>
                     <td>&nbsp;:&nbsp;</td>
-                    <td>1234</td>
+                    <td><?php echo $user->username; ?></td>
                 </tr>
                 <tr>
                     <td><p>First Name</p></td>
                     <td>&nbsp;:&nbsp;</td>
-                    <td>Nishan</td>
+                    <td><?php echo $user->first_name; ?></td>
                 </tr>
                 <tr>
                     <td><p>Last Name</p></td>
                     <td>&nbsp;:&nbsp;</td>
-                    <td>Wijethunga</td>
+                    <td><?php echo $user->last_name; ?></td>
                 </tr>
                 <tr>
                     <td><p>Contact No</p></td>
                     <td>&nbsp;:&nbsp;</td>
-                    <td>0710881319</td>
+                    <td><?php echo isset($user->phone) ? $user->phone : 'Not given'; ?></td>
                 </tr>
             </tbody>
         </table>
@@ -38,27 +37,33 @@
 
     <br>
     <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Update Basic Details</p>
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
 
-                <form method="post" name="update-user-detail-form">
+                <?php echo form_open($formSubmissionLink, array(), array("update-profile" => true)); ?>
                     <div class="form-group">
                         <label for="input-fname">First Name</label>
-                        <input type="text" class="form-control" id="input-fname" name="input-fname" aria-describedby="input-fnameHelp" placeholder="Enter First Name">
+                        <input type="text" class="form-control" id="input-fname" name="input-fname" aria-describedby="input-fnameHelp" placeholder="Enter First Name"
+                            value="<?php echo $user->first_name; ?>">
+                            <?php echo form_error('input-fname'); ?>
                         <small id="input-fnameHelp" class="form-text text-muted">Enter your first name.</small>
                     </div>
                     <div class="form-group">
                         <label for="input-lname">Last Name</label>
-                        <input type="text" class="form-control" id="input-lname" name="input-lname" aria-describedby="input-fnameHelp" placeholder="Enter Last Name">
+                        <input type="text" class="form-control" id="input-lname" name="input-lname" aria-describedby="input-fnameHelp" placeholder="Enter Last Name"
+                            value="<?php echo $user->last_name; ?>">
+                            <?php echo form_error('input-lname'); ?>
                         <small id="input-lnameHelp" class="form-text text-muted">Enter your last name.</small>
                     </div>
                     <div class="form-group">
                         <label for="input-contact-no">Contact Number</label>
-                        <input type="text" class="form-control" id="input-contact-no" name="input-contact-no" aria-describedby="input-contact-noHelp" placeholder="Enter Contact Number">
-                        <small id="input-contact-noHelp" class="form-text text-muted">Enter your contact number.</small>
+                        <input type="text" class="form-control" id="input-contact-no" name="input-contact-no" aria-describedby="input-contact-noHelp" placeholder="Enter Contact Number"
+                            value="<?php echo isset($user->phone) ? $user->phone : ''; ?>">
+                            <?php echo form_error('input-contact-no'); ?>
+                            <small id="input-contact-noHelp" class="form-text text-muted">Enter your contact number.</small>
                     </div>
                     <p class="btn-cont1"><button type="submit" name="update-user-detail-form" class="btn btn-primary btn-sm">Update Profile</button></p>
                 </form>
@@ -70,13 +75,13 @@
 
     <br>
     <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Change Password</p>
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
 
-                <form method="post" name="update-user-password-form">
+                <?php echo form_open($formSubmissionLink, array(), array("change-password" => true)); ?>
                     <div class="form-group">
                         <label for="input-fname">New Password</label>
                         <input type="password" class="form-control" id="input-new-passwd" name="input-new-passwd" aria-describedby="input-new-passwdHelp" placeholder="Enter New Password">
@@ -90,7 +95,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" id="input-old-password" name="input-old-password" placeholder="Old Password">
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-primary">Change Password</button>                   
+                            <button type="button" class="btn btn-primary">Change Password</button>
                         </div>
                     </div>
 
