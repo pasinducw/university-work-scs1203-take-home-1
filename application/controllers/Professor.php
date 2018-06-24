@@ -46,7 +46,7 @@ class Professor extends CI_Controller
         $data = array(
             'navigationData' => array(),
             'view' => "pages/professor/assignGraduate",
-            'viewData' => array() 
+            'viewData' => array()
         );
 
         $this->load->view('templates/dashboard',$data);
