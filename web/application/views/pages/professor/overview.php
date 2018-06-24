@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo base_url('assets/css/professorOverview.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/professor/professorOverview.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/all.css') ?>">
 
 
