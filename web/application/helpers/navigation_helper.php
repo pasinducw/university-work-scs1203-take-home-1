@@ -101,6 +101,16 @@ if (!function_exists('getNavigationEntries')) {
                 'url' => base_url('librarian/overview'),
                 'icon' => 'clipboard'
             ),
+            'addBook' => array(
+                'name' => 'Books',
+                'url' => base_url('librarian/book'),
+                'icon' => 'book-open'
+            ),
+            'bookBorrowAndReturn' => array(
+                'name' => 'Borrow & Return Books',
+                'url' => base_url('librarian/borrowAndReturnBook'),
+                'icon' => 'code'
+            ),
             'profile' => array(
                 'name' => 'Profile',
                 'url' => base_url('librarian/profile'),
