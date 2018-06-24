@@ -27,7 +27,7 @@
         <div class="col-md-4 login-cont-out">
           <div class="login-cont">
             <h1 class="login-heading">Login</h4>
-            <form method="post" name="login-form">
+            <?php echo form_open('/signin'); ?>
             <p style="text-align:center">
               <span class="input input--nao" style="margin-left:0;margin-right:0;font-weight:normal">
                 <input class="input__field input__field--nao" name="login-user-name" type="text" id="login-user-name" />
@@ -51,7 +51,10 @@
               </span>
             </p>
             <div class="error-cont">
-              <p class="error-text"></p>
+              <?php echo validation_errors(); ?>
+              <p class="error-text">
+                <?php echo isset($signin_error) ? $signin_error : ''; ?>
+              </p>
             </div>
             <p class="login-btn-cont">
               <button class="login-btn" type="submit" name="login-form">Log In</button>

@@ -11,22 +11,23 @@
     <div class="container-fluid">
 
         <div style="width:300px">
-            <form method="post" name="search-course-form">
+            <?php echo form_open('/professor/courseSections'); ?>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="input-course-name" placeholder="Course Name">
+                    <input type="text" class="form-control" name="input-course-name"
+                        value="<?php echo $courseFilter; ?>"
+                     placeholder="Course Name">
                     <div class="input-group-append">
                         <button class="btn btn-primary" name="search-course-form" type="submit">Search</button>
                     </div>
                 </div>
             </form>
         </div>
-        
+
         <div>
             <table class="custom-table" id="show-course-section">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>ID</th>
                         <th>Department</th>
                         <th>Name</th>
                         <th>Semester</th>
@@ -36,67 +37,42 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    <?php foreach ($courseSections as $section) {?>
                     <tr>
                         <td>
                             <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
-                                <input type="checkbox" onclick="selectCoureSection(event)" class="custom-control-input course-section-check-box" id="cs1" value="1" style="margin: 0">
-                                <label class="custom-control-label" for="cs1" style="margin: 0"></label>
+                                <input type="checkbox" onclick="selectCoureSection(event)" class="custom-control-input course-section-check-box"
+                                id="<?php echo $section->course_id . ':' . $section->section_id . ':' . $section->semester . ':' . $section->year ?>"
+                                value="<?php echo $section->course_id . ':' . $section->section_id . ':' . $section->semester . ':' . $section->year ?>" style="margin: 0">
+                                <label class="custom-control-label" for="<?php echo $section->course_id . ':' . $section->section_id . ':' . $section->semester . ':' . $section->year ?>" style="margin: 0"></label>
                             </div>
                         </td>
-                        <td>1</td>
-                        <td>Department</td>
-                        <td>Name</td>
-                        <td>Semester</td>
-                        <td>Year</td>
-                        <td>C. Hours</td>
-                        <td>Section No</td>
+                        <td><?php echo $section->department; ?></td>
+                        <td><?php echo $section->name; ?></td>
+                        <td><?php echo $section->semester; ?></td>
+                        <td><?php echo $section->year; ?></td>
+                        <td><?php echo $section->credit_hours; ?></td>
+                        <td><?php echo $section->section_id; ?></td>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
-                                <input type="checkbox" onclick="selectCoureSection(event)" class="custom-control-input course-section-check-box" id="cs2" value="2" style="margin: 0">
-                                <label class="custom-control-label" for="cs2" style="margin: 0"></label>
-                            </div>
-                        </td>
-                        <td>1</td>
-                        <td>Department</td>
-                        <td>Name</td>
-                        <td>Semester</td>
-                        <td>Year</td>
-                        <td>C. Hours</td>
-                        <td>Section No</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
-                                <input type="checkbox" onclick="selectCoureSection(event)" class="custom-control-input course-section-check-box" id="cs3" value="3" style="margin: 0">
-                                <label class="custom-control-label" for="cs3" style="margin: 0"></label>
-                            </div>
-                        </td>
-                        <td>1</td>
-                        <td>Department</td>
-                        <td>Name</td>
-                        <td>Semester</td>
-                        <td>Year</td>
-                        <td>C. Hours</td>
-                        <td>Section No</td>
-                    </tr>
-                    
+                    <?php }?>
                 </tbody>
             </table>
         </div>
         <br>
-        
-        <form method="post" name="add-to-mycourse-section-form">
+
+            <?php echo form_open('/professor/courseSections', array(), array("input-course-name" => $courseFilter)); ?>
             <div class="row">
                 <div class="col-md-10">
                     <div style="padding-bottom:10px">
                         <label class="mr-sm-2" for="select-book">Course Section</label>
                         <select class="custom-select" oninput="selectInputCourseSection(event)" id="select-course-section" name="select-course-section">
                             <option value="" selected>Choose Course Section</option>
-                            <option value="1">Course Section 1</option>
-                            <option value="2">Course Section 2</option>
-                            <option value="3">Course Section 3</option>
+                            <?php foreach ($courseSections as $section) {?>
+                                <option value="<?php echo $section->course_id . ':' . $section->section_id . ':' . $section->semester . ':' . $section->year ?>">
+                                    <?php echo $section->name . ' Year ' . $section->year . ' Semester ' . $section->semester . ' Section ' . $section->section_id; ?>
+                                </option>
+                            <?php }?>
                         </select>
                     </div>
                 </div>
@@ -107,7 +83,7 @@
                 </div>
             </div>
         </form>
-        <p class="error-text">Error</p>
+        <!--<p class="error-text">Error</p>-->
 
         <br>
 
@@ -116,7 +92,6 @@
             <table class="custom-table" id="show-course-section">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Department</th>
                         <th>Name</th>
                         <th>Semester</th>
@@ -127,48 +102,24 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($assignedCourseSections as $section) {?>
                     <tr>
-                        <td>1</td>
-                        <td>Department</td>
-                        <td>Name</td>
-                        <td>Semester</td>
-                        <td>Year</td>
-                        <td>C. Hours</td>
-                        <td>Section No</td>
+                        <td><?php echo $section->department; ?></td>
+                        <td><?php echo $section->name; ?></td>
+                        <td><?php echo $section->semester; ?></td>
+                        <td><?php echo $section->year; ?></td>
+                        <td><?php echo $section->credit_hours; ?></td>
+                        <td><?php echo $section->section_id; ?></td>
                         <td>
+                            <?php echo form_open('/professor/courseSections'); ?>
+                            <input type="hidden" name="unassign-section" value="<?php echo $section->course_id . ':' . $section->section_id . ':' . $section->semester . ':' . $section->year ?>">
                             <p style="text-align:center;margin:0">
                                 <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                             </p>
+                            </form>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Department</td>
-                        <td>Name</td>
-                        <td>Semester</td>
-                        <td>Year</td>
-                        <td>C. Hours</td>
-                        <td>Section No</td>
-                        <td>
-                            <p style="text-align:center;margin:0">
-                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Department</td>
-                        <td>Name</td>
-                        <td>Semester</td>
-                        <td>Year</td>
-                        <td>C. Hours</td>
-                        <td>Section No</td>
-                        <td>
-                            <p style="text-align:center;margin:0">
-                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                            </p>
-                        </td>
-                    </tr>
+                    <?php }?>
                 </tbody>
             </table>
         </div>
@@ -187,6 +138,7 @@
         }
 
         function selectCoureSection(event){
+            console.log(event);
             if (catCheckBoxCheck(event.target.className)) {
                 var checkBox = document.getElementsByClassName(event.target.className);
                 for (var y = 0; y < checkBox.length; y++) {
@@ -195,6 +147,7 @@
                     }
                 }
                 event.target.checked = true;
+                console.log('here');
 
                 document.getElementById('select-course-section').value = event.target.value;
 
@@ -212,7 +165,7 @@
             }
             for (var y = 0; y < checkBox.length; y++) {
                 if (checkBox[y].value === event.target.value) {
-                    checkBox[y].checked = true;                          
+                    checkBox[y].checked = true;
                 }
             }
         }
