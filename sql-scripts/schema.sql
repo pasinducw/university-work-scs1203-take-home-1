@@ -261,7 +261,7 @@ CREATE TABLE `courses` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `department_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `credit_hours` int(10) unsigned NOT NULL,
-  `college` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `college` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'None',
   PRIMARY KEY (`course_id`),
   KEY `fk_courses_to_departments` (`department_id`),
   CONSTRAINT `fk_courses_to_departments` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`)
@@ -274,6 +274,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+INSERT INTO `courses` VALUES ('biochemistry','Bio Chemistry','science',100,'None'),('database','Database','ucsc',50,'None'),('dsa','DSA','ucsc',100,'None'),('programming','Programming','ucsc',80,'None');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,7 +290,7 @@ CREATE TABLE `departments` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `department_head_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department_head_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`department_id`),
   UNIQUE KEY `departments_name_unique` (`name`),
   KEY `fk_departments_to_professors` (`department_head_id`),
@@ -303,6 +304,7 @@ CREATE TABLE `departments` (
 
 LOCK TABLES `departments` WRITE;
 /*!40000 ALTER TABLE `departments` DISABLE KEYS */;
+INSERT INTO `departments` VALUES ('science','Science Facutly','aiNaasDe8l','mAB0vCkuzS',NULL),('ucsc','UCSC','M6Q1B3DqSI','n5rXLxYtLP',NULL);
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,6 +330,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+INSERT INTO `employees` VALUES ('emp1',1);
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -340,7 +343,7 @@ DROP TABLE IF EXISTS `lab_sessions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lab_sessions` (
   `course_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `section_id` int(10) unsigned NOT NULL,
+  `section_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `semester` int(10) unsigned NOT NULL,
   `year` int(10) unsigned NOT NULL,
   `lab_session_id` int(10) unsigned NOT NULL,
@@ -423,7 +426,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -432,7 +435,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (123,'2014_10_12_000000_create_users_table',1),(124,'2018_06_15_072844_create_departments_table',1),(125,'2018_06_15_083527_create_authors_table',1),(126,'2018_06_15_161753_create_employees_table',1),(127,'2018_06_15_161815_create_professors_table',1),(128,'2018_06_15_161823_create_managers_table',1),(129,'2018_06_15_161831_create_librarians_table',1),(130,'2018_06_15_161835_create_students_table',1),(131,'2018_06_15_161837_create_undergraduates_table',1),(132,'2018_06_15_161843_create_postgraduates_table',1),(133,'2018_06_16_054728_create_company_sessions_table',1),(134,'2018_06_16_071903_create_company_evaluations_table',1),(135,'2018_06_16_072850_create_courses_table',1),(136,'2018_06_16_072856_create_sections_table',1),(137,'2018_06_16_072905_create_lab_sessions_table',1),(138,'2018_06_16_084214_create_books_table',1),(139,'2018_06_16_084517_create_book_copies_table',1),(140,'2018_06_16_100158_add_head_to_department',1),(141,'2018_06_16_100415_create_course_prerequisites_table',1),(142,'2018_06_16_101257_create_course_student_enrollments_table',1),(143,'2018_06_16_101830_create_section_student_enrollments_table',1),(144,'2018_06_16_102050_create_textbooks_table',1),(145,'2018_06_16_102626_create_book_authorships_table',1),(146,'2018_06_16_103440_create_company_session_enrollments_table',1),(147,'2018_06_23_190653_user_roles_view',1);
+INSERT INTO `migrations` VALUES (53,'2014_10_12_000000_create_users_table',1),(54,'2018_06_15_072844_create_departments_table',1),(55,'2018_06_15_083527_create_authors_table',1),(56,'2018_06_15_161753_create_employees_table',1),(57,'2018_06_15_161815_create_professors_table',1),(58,'2018_06_15_161823_create_managers_table',1),(59,'2018_06_15_161831_create_librarians_table',1),(60,'2018_06_15_161835_create_students_table',1),(61,'2018_06_15_161837_create_undergraduates_table',1),(62,'2018_06_15_161843_create_postgraduates_table',1),(63,'2018_06_16_054728_create_company_sessions_table',1),(64,'2018_06_16_071903_create_company_evaluations_table',1),(65,'2018_06_16_072850_create_courses_table',1),(66,'2018_06_16_072856_create_sections_table',1),(67,'2018_06_16_072905_create_lab_sessions_table',1),(68,'2018_06_16_084214_create_books_table',1),(69,'2018_06_16_084517_create_book_copies_table',1),(70,'2018_06_16_100158_add_head_to_department',1),(71,'2018_06_16_100415_create_course_prerequisites_table',1),(72,'2018_06_16_101257_create_course_student_enrollments_table',1),(73,'2018_06_16_101830_create_section_student_enrollments_table',1),(74,'2018_06_16_102050_create_textbooks_table',1),(75,'2018_06_16_102626_create_book_authorships_table',1),(76,'2018_06_16_103440_create_company_session_enrollments_table',1),(77,'2018_06_23_190653_user_roles_view',1),(78,'2018_06_24_141646_professors_view',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -485,8 +488,28 @@ CREATE TABLE `professors` (
 
 LOCK TABLES `professors` WRITE;
 /*!40000 ALTER TABLE `professors` DISABLE KEYS */;
+INSERT INTO `professors` VALUES ('emp1','ucsc',NULL);
 /*!40000 ALTER TABLE `professors` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `professors_view`
+--
+
+DROP TABLE IF EXISTS `professors_view`;
+/*!50001 DROP VIEW IF EXISTS `professors_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `professors_view` AS SELECT 
+ 1 AS `department`,
+ 1 AS `user_id`,
+ 1 AS `first_name`,
+ 1 AS `last_name`,
+ 1 AS `phone`,
+ 1 AS `employee_id`,
+ 1 AS `department_id`,
+ 1 AS `author_name`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `section_student_enrollments`
@@ -497,7 +520,7 @@ DROP TABLE IF EXISTS `section_student_enrollments`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `section_student_enrollments` (
   `course_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `section_id` int(10) unsigned NOT NULL,
+  `section_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `semester` int(10) unsigned NOT NULL,
   `year` int(10) unsigned NOT NULL,
   `student_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -526,10 +549,10 @@ DROP TABLE IF EXISTS `sections`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sections` (
   `course_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `section_id` int(10) unsigned NOT NULL,
+  `section_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `semester` int(10) unsigned NOT NULL,
   `year` int(10) unsigned NOT NULL,
-  `professor_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `professor_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`course_id`,`section_id`,`semester`,`year`),
   KEY `fk_sections_to_professors` (`professor_id`),
   CONSTRAINT `fk_sections_to_courses` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`),
@@ -543,6 +566,7 @@ CREATE TABLE `sections` (
 
 LOCK TABLES `sections` WRITE;
 /*!40000 ALTER TABLE `sections` DISABLE KEYS */;
+INSERT INTO `sections` VALUES ('dsa','scs1301',2,1,NULL),('database','scs1203',1,1,'emp1'),('dsa','scs1201',1,1,'emp1'),('programming','scs1202',1,2,'emp1');
 /*!40000 ALTER TABLE `sections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -625,14 +649,14 @@ LOCK TABLES `undergraduates` WRITE;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `userRoles`
+-- Temporary table structure for view `user_roles_view`
 --
 
-DROP TABLE IF EXISTS `userRoles`;
-/*!50001 DROP VIEW IF EXISTS `userRoles`*/;
+DROP TABLE IF EXISTS `user_roles_view`;
+/*!50001 DROP VIEW IF EXISTS `user_roles_view`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `userRoles` AS SELECT 
+/*!50001 CREATE VIEW `user_roles_view` AS SELECT 
  1 AS `user_id`,
  1 AS `is_admin`,
  1 AS `is_student`,
@@ -659,7 +683,7 @@ CREATE TABLE `users` (
   `is_admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `users_username_unique` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -668,14 +692,15 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin','secret','John','Snow','0712365498',1),(2,'caNSHNqfHW','secret','dnOZA9JnlF','j69TSRPZC2','fehWIiMljw',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Final view structure for view `userRoles`
+-- Final view structure for view `professors_view`
 --
 
-/*!50001 DROP VIEW IF EXISTS `userRoles`*/;
+/*!50001 DROP VIEW IF EXISTS `professors_view`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -684,7 +709,25 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `userRoles` AS select `user`.`user_id` AS `user_id`,`user`.`is_admin` AS `is_admin`,(`student`.`user_id` is not null) AS `is_student`,(`employee`.`user_id` is not null) AS `is_employee`,(`professor`.`employee_id` is not null) AS `is_professor`,(`manager`.`employee_id` is not null) AS `is_manager`,(`librarian`.`employee_id` is not null) AS `is_librarian` from (((((`users` `user` left join `students` `student` on((`user`.`user_id` = `student`.`user_id`))) left join `employees` `employee` on((`user`.`user_id` = `employee`.`user_id`))) left join `professors` `professor` on((`employee`.`employee_id` = `professor`.`employee_id`))) left join `managers` `manager` on((`employee`.`employee_id` = `manager`.`employee_id`))) left join `librarians` `librarian` on((`employee`.`employee_id` = `librarian`.`employee_id`))) */;
+/*!50001 VIEW `professors_view` AS select `department`.`name` AS `department`,`user`.`user_id` AS `user_id`,`user`.`first_name` AS `first_name`,`user`.`last_name` AS `last_name`,`user`.`phone` AS `phone`,`employee`.`employee_id` AS `employee_id`,`professor`.`department_id` AS `department_id`,`professor`.`author_name` AS `author_name` from (((`users` `user` join `employees` `employee` on((`employee`.`user_id` = `user`.`user_id`))) join `professors` `professor` on((`professor`.`employee_id` = `employee`.`employee_id`))) join `departments` `department` on((`department`.`department_id` = `professor`.`department_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `user_roles_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `user_roles_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `user_roles_view` AS select `user`.`user_id` AS `user_id`,`user`.`is_admin` AS `is_admin`,(`student`.`user_id` is not null) AS `is_student`,(`employee`.`user_id` is not null) AS `is_employee`,(`professor`.`employee_id` is not null) AS `is_professor`,(`manager`.`employee_id` is not null) AS `is_manager`,(`librarian`.`employee_id` is not null) AS `is_librarian` from (((((`users` `user` left join `students` `student` on((`user`.`user_id` = `student`.`user_id`))) left join `employees` `employee` on((`user`.`user_id` = `employee`.`user_id`))) left join `professors` `professor` on((`employee`.`employee_id` = `professor`.`employee_id`))) left join `managers` `manager` on((`employee`.`employee_id` = `manager`.`employee_id`))) left join `librarians` `librarian` on((`employee`.`employee_id` = `librarian`.`employee_id`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -698,4 +741,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-24  1:57:33
+-- Dump completed on 2018-06-24 23:11:15
