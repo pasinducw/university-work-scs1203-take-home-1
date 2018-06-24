@@ -1,0 +1,42 @@
+.heading1 {
+    text-align: center;
+}
+
+.sesction1 {
+    background-color: #f6f6f6;
+    padding: 3px 0 3px 10px;
+}
+
+.add-section-cont {
+    position: relative;
+}
+
+#show-course-section {
+    text-align: center;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+    top: -14px;
+    left: -7px;
+}
+
+.test1 {
+    background-color: aqua;
+    height: 200px
+}
+
+.test2 {
+    background-color: blueviolet;
+    height: 200px
+}
+
+.test3 {
+    background-color: burlywood;
+    height: 200px
+}
+
+.test4 {
+    background-color: cadetblue;
+    height: 200px
+}

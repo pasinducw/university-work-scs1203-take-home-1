@@ -95,11 +95,11 @@
                     <div style="padding-bottom:10px">
                         <label class="mr-sm-2" for="select-book">Student</label>
                         <select class="custom-select" oninput="selectInputBook(event)" id="select-book" name="select-book">
-                        <option value="" selected>Choose Book</option>
-                        <option value="1">Book 1</option>
-                        <option value="2">Book 2</option>
-                        <option value="3">Book 3</option>
-                    </select>
+                            <option value="" selected>Choose Book</option>
+                            <option value="1">Book 1</option>
+                            <option value="2">Book 2</option>
+                            <option value="3">Book 3</option>
+                        </select>
                     </div>
 
                     <p style="text-align:right">
