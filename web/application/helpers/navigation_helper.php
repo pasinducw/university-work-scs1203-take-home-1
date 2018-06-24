@@ -64,6 +64,11 @@ if (!function_exists('getNavigationEntries')) {
                 'name' => 'Assign Graduates For Lab &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sessions',
                 'url' => base_url('professor/assignGraduate'),
                 'icon' => 'git-branch'
+            ),
+            'profile' => array(
+                'name' => 'Profile',
+                'url' => base_url('professor/profile'),
+                'icon' => 'user'
             )
         );
 
@@ -90,19 +95,19 @@ if (!function_exists('getNavigationEntries')) {
 
     function navigation_getLibrarianNavs()
     {
-        $entries = array();
-
-        $entries['profile'] = array(
-            'name' => 'Profile',
-            'url' => base_url('student/profile'),
-            'icon' => 'user',
+        $entries = array(
+            'overview' => array(
+                'name' => 'Overview',
+                'url' => base_url('librarian/overview'),
+                'icon' => 'clipboard'
+            ),
+            'profile' => array(
+                'name' => 'Profile',
+                'url' => base_url('librarian/profile'),
+                'icon' => 'user'
+            )
         );
 
-        $entries['courses'] = array(
-            'name' => 'Enroll for Course',
-            'url' => base_url('student/courses'),
-            'icon' => 'book-open',
-        );
         return $entries;
     }
 
