@@ -38,16 +38,6 @@ class Librarian extends CI_Controller
         $this->load->view('templates/dashboard', $data);
     }
 
-    public function returnBook(){
-        $data = array(
-            'navigationData' => getNavigationEntries('librarian'),
-            'view' => "pages/librarian/returnBook",
-            'viewData' => array()
-        );
-
-        $this->load->view('templates/dashboard', $data);
-    }
-
     public function book(){
         $data = array(
             'navigationData' => getNavigationEntries('librarian'),
