@@ -2,7 +2,7 @@
     exit('No direct script access allowed');
 }
 
-class Course_sections_model extends CI_Model
+class Course_section_model extends CI_Model
 {
 
     public function __construct()

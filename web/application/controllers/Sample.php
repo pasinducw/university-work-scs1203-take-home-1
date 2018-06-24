@@ -3,11 +3,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Sample extends CI_Controller
 {
-    // public function __construct()
-    // {
-    //     parent::__construct();
-    //     $this->load->model('user_model');
-    // }
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('course_section_model');
+        $this->load->model('professor_model');
+        $this->load->model('user_model');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+    }
 
     public function index()
     {

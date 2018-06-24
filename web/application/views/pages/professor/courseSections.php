@@ -70,7 +70,7 @@
                             <option value="" selected>Choose Course Section</option>
                             <?php foreach ($courseSections as $section) {?>
                                 <option value="<?php echo $section->course_id . ':' . $section->section_id . ':' . $section->semester . ':' . $section->year ?>">
-                                    <?php echo $section->name . ' Year ' . $section->year . ' Semester ' . $section->semester . ' Section ' . $section->section_id; ?>
+                                <?php echo $section->name . ': ' . $section->section_id . ' (Year ' . $section->year . '  Semester ' . $section->semester . ')'; ?>
                                 </option>
                             <?php }?>
                         </select>

@@ -42,7 +42,7 @@ class User_model extends CI_Model
         $user['first_name'] = $result->first_name;
         $user['last_name'] = $result->last_name;
         $user['phone'] = $result->phone;
-        
+
         $user['is_admin'] = false;
         $user['is_professor'] = false;
         $user['is_student'] = false;
@@ -91,6 +91,25 @@ class User_model extends CI_Model
             throw new Exception('User not logged in!');
         }
         return $this->session->user;
+    }
+
+    public function getUser($userId)
+    {
+        $this->db->select('user_id, username, first_name, last_name, phone');
+        $this->db->from('users');
+        $this->db->where('user_id', $userId);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function updateUser($userId, $firstName, $lastName, $phone)
+    {
+        $sql = '
+            UPDATE users
+            SET first_name = ?, last_name = ?, phone = ?
+            WHERE user_id = ?
+        ';
+        $this->db->query($sql, array($firstName, $lastName, $phone, $userId));
     }
 
 }
