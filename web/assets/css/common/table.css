@@ -1,0 +1,36 @@
+.custom-table {
+    width: 100%;
+    border: 1px solid rgb(12, 12, 12);
+}
+
+.custom-table thead {
+    background-color: rgb(12, 12, 12);
+    color: white;
+}
+
+.custom-table thead tr {}
+
+.custom-table thead tr th {
+    padding: 3px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.custom-table thead tr th:not(:last-child) {
+    border-right: 1px solid rgb(185, 185, 185);
+}
+
+.custom-table tbody {}
+
+.custom-table tbody tr td {
+    padding: 3px;
+}
+
+.custom-table tbody tr td:not(:last-child) {
+    text-align: center;
+    border-right: 1px solid rgb(185, 185, 185);
+}
+
+.custom-table tbody tr:nth-child(2n-1) {
+    background-color: rgb(235, 235, 235)
+}

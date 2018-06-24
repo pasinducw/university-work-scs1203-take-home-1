@@ -80,7 +80,7 @@
 
                     <div style="padding-bottom:10px">
                         <label class="mr-sm-2" for="select-student-for-lab-session">Student</label>
-                        <select class="custom-select" id="select-student-for-lab-session" name="select-student-for-lab-session">
+                        <select class="custom-select" oninput="selectInputStd(event)" id="select-student-for-lab-session" name="select-student-for-lab-session">
                         <option value="" selected>Choose Student</option>
                         <option value="1">Student 1</option>
                         <option value="2">Student 2</option>
@@ -93,9 +93,6 @@
                     </p>
 
                 </form>
-
-
-
 
             </div>
             <div class="col-md-4">
@@ -177,8 +174,22 @@
 
                 document.getElementById('select-student-for-lab-session').value = event.target.value;
 
-            }else{
+            } else {
                 document.getElementById('select-student-for-lab-session').value = "";
+            }
+        }
+
+        function selectInputStd(event) {
+            var checkBox = document.getElementsByClassName('custom-control-input post-grad-check-box');
+            for (var y = 0; y < checkBox.length; y++) {
+                if (checkBox[y].checked) {
+                    checkBox[y].checked = false;
+                }
+            }
+            for (var y = 0; y < checkBox.length; y++) {
+                if (checkBox[y].value === event.target.value) {
+                    checkBox[y].checked = true;                          
+                }
             }
         }
     </script>
