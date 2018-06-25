@@ -62,7 +62,58 @@ class Admin extends CI_Controller
         $data = array(
             'navigationData' => getNavigationEntries('admin'),
             'view' => "pages/admin/departmentsHeads",
-            'viewData' => array()
+            'viewData' => array(
+                'urls' => array(
+                    'addDptHead' => 'addDepartmentsHead',
+                    'editDptHead' => 'editDepartmentHead',
+                    'dptHeadOrder' => 'setDepartmentHeadOrder'
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function addDepartmentsHead($dptID)
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/add/addDepartmentsHeads",
+            'viewData' => array(
+                'urls' => array(
+                    'back_url' => 'departmentsHeads'
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function editDepartmentHead($dptID)
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/edit/editDepartmentHead",
+            'viewData' => array(
+                'urls' => array(
+                    'back_url' => 'departmentsHeads'
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function setDepartmentHeadOrder($dptID)
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/setDepartmentHeadOrder",
+            'viewData' => array(
+                'urls' => array(
+                    'back_url' => 'departmentsHeads'
+                )
+            )
         );
 
         $this->load->view('templates/dashboard', $data);

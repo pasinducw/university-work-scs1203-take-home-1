@@ -8,87 +8,21 @@
     <h2 class="heading1">Department Heads</h2>
     <br>
 
-    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Details of Department Heads</p>
+    <p class="dptmnt">Department</p>
 
-    <div>
-        <table class="custom-table" id="department-head-show-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Department Name</th>
-                    <th>Department Head</th>
-                    <th>Set Department Head Order</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>243</td>
-                    <td>Name</td>
-                    <td>name name</td>
-                    <td style="width:200px">
-                        <a href="<?php echo $viewData['urls']['dptHeadOrder']; ?>/45" class="btn btn-sm btn-primary">
-                            <i class="fa fa-list"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="<?php echo $viewData['urls']['addDptHead']; ?>/345" class="btn btn-sm btn-success">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                        <a href="<?php echo $viewData['urls']['editDptHead']; ?>/35" class="btn btn-sm btn-warning">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        <a href="" class="btn btn-sm btn-danger">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Edit Department Head</p>
 
-    <br>
 
-    <!-- <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Add Department Heads</p> -->
-
-    <!-- <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
-                <table class="custom-table" id="department-head-show-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>ID</th>
-                            <th>Department Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
-                                    <input type="checkbox" onclick="selectDept(event)" class="custom-control-input dept-check-box" id="dpt1" value="1" style="margin: 0">
-                                    <label class="custom-control-label" for="dpt1" style="margin: 0"></label>
-                                </div>
-                            </td>
-                            <td>ID</td>
-                            <td>name name</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div class="col-md-1"></div>
             <div class="col-md-6">
-
-                <form method="post" name="add-department-head-form">
+                <form method="post" name="edit-department-head-form">
                     <div class="row">
                         <div class="col-md-6">
-                            <div style="padding-bottom:10px">
-                                <label class="mr-sm-2" for="select-prof">Department</label>
-                                <select class="custom-select" oninput="selectInputDept(event)" id="select-dept" name="select-dept">
-                                    <option value="" selected>Choose Department</option>
-                                    <option value="1">Department 1</option>
-                                    <option value="2">Department 2</option>
-                                    <option value="3">Department 3</option>
-                                </select>
+                            <div class="form-group">
+                                <label for="input-department-id">Department ID</label>
+                                <input type="text" class="form-control" id="input-department-id" name="input-department-id" aria-describedby="input-department-idHelp" placeholder="Department ID" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -102,14 +36,14 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                     <p style="text-align:center">
-                        <button type="submit" name="add-department-head-form" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>&nbsp;Add Department Head</button>
+                        <a href="../<?php echo $viewData['urls']['back_url'] ?>" class="btn btn-sm btn-dark" role="button">Back</a>
+                        <button type="submit" name="edit-department-head-form" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>&nbsp;Add Department Head</button>
                     </p>
                 </form>
-
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <form method="post" name="search-prof-form">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="input-prof-name" placeholder="Professor Name">
@@ -150,9 +84,9 @@
                     </tbody>
                 </table>
             </div>
-            
-        </div>
-    </div>
+            <div class="col-md-1"></div>
+        </div> 
+    </div> 
     <script>
         
         function catCheckBoxCheck(className) {
@@ -195,6 +129,5 @@
             }
         }
 
-    </script> -->
-
+    </script>
 </div>
