@@ -17,8 +17,8 @@ class TextbooksView extends Migration
             SELECT
                 book.book_id as book_id, book.title as title, 
                 book.publisher as publisher, book.year as year, 
-                book.authors as authors, course.name as course,
-                professor.first_name as professor
+                book.authors as authors, course.name as course, course.course_id as course_id,
+                professor.first_name as professor, professor.employee_id as professor_id
             FROM textbooks as textbook
             INNER JOIN books_view as book ON (textbook.book_id = book.book_id)
             INNER JOIN professors_view as professor ON (professor.employee_id = textbook.professor_id)

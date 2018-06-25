@@ -28,7 +28,7 @@ class Professor_model extends CI_Model
 
         $this->db->select('*');
         $this->db->from('professors_view');
-        $this->db->where('user_id', $user['user_id']);
+        $this->db->where('user_id', $user->user_id);
         $query = $this->db->get();
 
         $result = $query->row();

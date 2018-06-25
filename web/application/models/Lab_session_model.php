@@ -50,4 +50,15 @@ class Lab_session_model extends CI_Model
         $query = $this->db->query($sql, array($courseId, $sectionId, $semester, $year, $topic));
     }
 
+    public function setConductorForSession($courseId,
+        $sectionId, $semester, $year, $topic, $studentId) {
+        $sql = '
+            UPDATE lab_sessions 
+            SET conductor_id = ?
+            WHERE course_id = ? AND section_id = ? AND semester = ? AND year = ? AND topic = ? 
+        ';
+
+        $this->db->query($sql, array($studentId, $courseId, $sectionId, $semester, $year, $topic));
+    }
+
 }

@@ -13,18 +13,24 @@ class Welcome extends CI_Controller
     {
         try {
             $user = $this->user_model->getCurrentUser();
-
-            // based on the role, redirect to the right dashboard
-            if ($user['is_admin']) {
-                redirect(base_url('/professor'));
-            } else if ($user['is_professor']) {
-                redirect(base_url('/professor'));
-            } else if ($user['is_student']) {
-                redirect(base_url('/professor'));
-            } else if ($user['is_librarian']) {
-                redirect(base_url('/professor'));
-            } else if ($user['is_manager']) {
-                redirect(base_url('/professor'));
+            switch ($user->role) {
+                case 'admin':
+                    redirect(base_url('/admin'));
+                    break;
+                case 'professor':
+                    redirect(base_url('/professor'));
+                    break;
+                case 'undergraduate':
+                    redirect(base_url('/student'));
+                    break;
+                case 'graduate':
+                    redirect(base_url('/student'));
+                    break;
+                case 'librarian':
+                    redirect(base_url('/librarian'));
+                    break;
+                case 'manager':
+                    redirect(base_url('/companySessionManager'));
             }
 
             // don't know what the user is

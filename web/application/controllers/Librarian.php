@@ -12,6 +12,12 @@ class Librarian extends CI_Controller
         $this->load->model('book_model');
         $this->load->helper('form');
         $this->load->library('form_validation');
+
+        try {
+            $this->user_model->getCurrentUser();
+        } catch (Exception $ex) {
+            redirect(base_url('/signin'));
+        }
     }
 
     public function index()
@@ -52,8 +58,9 @@ class Librarian extends CI_Controller
             $publisher = $this->input->post('input-book-pub');
             $isbn = $this->input->post('input-book-isbn');
             $copyCount = $this->input->post('input-book-copy-count');
+            $year = $this->input->post('input-book-publish-year');
 
-            $this->book_model->addBook($title, $publisher, $isbn, $copyCount);
+            $this->book_model->addBook($title, $publisher, $isbn, $year, $copyCount);
         }
 
         if ($this->input->post('delete-book-request')) {
@@ -156,8 +163,8 @@ class Librarian extends CI_Controller
             'view' => "pages/common/profile/profileView",
             'viewData' => array(),
         );
-
-        $data['viewData']['user'] = $this->user_model->getUser($user['user_id']);
+        
+        $data['viewData']['user'] = $this->user_model->getUser($user->user_id);
         $data['viewData']['formSubmissionLink'] = '/librarian/profile';
 
         $this->load->view('templates/dashboard', $data);
