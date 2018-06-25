@@ -64,6 +64,7 @@ body,
     right: 0;
     left: 0;
     background-color: #2a2a2a;
+    min-height: 400px
 }
 
 .signin-front {
@@ -72,7 +73,7 @@ body,
     bottom: 2px;
     right: 10px;
     left: 10px;
-    background-color: whitesmoke;
+    background-image: url('../img/login_background.svg');
     box-shadow: 0px 0px 20px 10px #000000
 }
 
@@ -99,14 +100,14 @@ body,
 .login-btn {
     border: 0;
     width: 100%;
-    background-color: #0083e3;
+    background-color: #1c1f71;
     color: white;
     height: 30px;
     transition: 0.3s
 }
 
 .login-btn:hover {
-    background-color: #005796;
+    background-color: #101249;
     cursor: pointer;
 }
 
@@ -115,7 +116,7 @@ body,
 }
 
 .error-cont .error-text {
-    background-color: #e30034;
+    background-color: #b3002aad;
     color: white;
     text-align: center;
     font-size: 13px;
@@ -130,11 +131,12 @@ body,
 .login-cont input[type="text"],
 .login-cont input[type="password"] {
     font-weight: normal;
+    color: #f5f5f5;
 }
 
 .login-heading {
     text-align: center;
-    /* font-family: 'Ubuntu', sans-serif; */
+    color: #f5f5f5
 }
 
 .input-cont {
@@ -165,4 +167,62 @@ body,
     bottom: 2px;
     font-size: 20px;
     color: #f5f5f5;
+}
+
+
+/* TEXT FIELD CUSTOMIZED */
+
+.input--nao {
+    overflow: hidden;
+    padding-top: 1em;
+}
+
+.input__field--nao {
+    padding: 0.5em 0em 0.25em;
+    width: 100%;
+    background: transparent;
+    color: #9da8b2;
+    font-size: 1.25em;
+}
+
+.input__label--nao {
+    color: #ffffff;
+    position: absolute;
+    top: 0.95em;
+    font-size: 0.85em;
+    left: 0;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0em;
+    pointer-events: none;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transition: -webkit-transform 0.2s 0.15s, color 1s;
+    transition: transform 0.2s 0.15s, color 1s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.graphic--nao {
+    stroke: #ffffff60;
+    pointer-events: none;
+    -webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
+    transition: transform 0.7s, stroke 0.7s;
+    -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+    transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+}
+
+.input__field--nao:focus+.input__label--nao,
+.input--filled .input__label--nao {
+    color: rgba(255, 255, 255, 0.568);
+    -webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
+    transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
+}
+
+.input__field--nao:focus~.graphic--nao,
+.input--filled .graphic--nao {
+    stroke: rgb(255, 255, 255);
+    -webkit-transform: translate3d(-66.6%, 0, 0);
+    transform: translate3d(-66.6%, 0, 0);
 }
