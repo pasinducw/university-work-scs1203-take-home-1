@@ -105,3 +105,10 @@ body {
 
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.error-text {
+  background-color: rgb(173, 71, 71);
+  color: white;
+  padding: 3px 5px 3px 5px;
+  margin-top:5px;
+}

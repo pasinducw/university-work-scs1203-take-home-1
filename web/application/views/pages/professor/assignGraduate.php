@@ -1,10 +1,7 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/professor/assignGraduate.css') ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/css/common/common.css') ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/all.css') ?>">
-
 <div style="padding-top:20px;padding-bottom:30px">
 
-    <h2 class="heading1">Assign Post Graduates For Lab Sessions</h2>
+    <h2 class="heading1">Lab Session Conductors (Post-Graduates)</h2>
 
     <br>
 
@@ -36,7 +33,11 @@
                         <td>Nishan Wijethunga</td>
                         <td>sf dgag dhtnjaja</td>
                         <td>
-                            <p style="text-align:center;margin:0"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></p>
+                            <p style="text-align:center;margin:0">
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </p>
                         </td>
                     </tr>
                     <tr>
@@ -44,7 +45,11 @@
                         <td>Nishan Wijethunga</td>
                         <td>sf dgag dhtnjaja</td>
                         <td>
-                            <p style="text-align:center;margin:0"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></p>
+                            <p style="text-align:center;margin:0">
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </p>
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +57,11 @@
                         <td>Nishan Wijethunga</td>
                         <td>sf dgag dhtnjaja</td>
                         <td>
-                            <p style="text-align:center;margin:0"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></p>
+                            <p style="text-align:center;margin:0">
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </p>
                         </td>
                     </tr>
 
@@ -61,32 +70,40 @@
             </table>
         </div>
         <br>
-        <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Add Students For Lab Sessions</p>
+        <p class="sesction1">
+            <i class="fa fa-angle-double-right"></i>&nbsp;Assign post-graduate</p>
         <br>
         <div class="row">
             <div class="col-md-8" style="border-right:1px solid rgb(185, 185, 185);">
 
                 <form method="post" name="add-student-for-lab-session-form">
-
                     <div style="padding-bottom:10px">
                         <label class="mr-sm-2" for="select-labsession">Lab Session</label>
                         <select class="custom-select" id="select-labsession" name="select-labsession">
-                        <option value="" selected>Choose Lab Session</option>
-                        <option value="1">Lab Session 1</option>
-                        <option value="2">Lab Session 2</option>
-                        <option value="3">Lab Session 3</option>
-                    </select>
+                            <option value="" <?php echo set_select('select-course-section', '', true); ?> selected>Choose Lab Session</option>
+                            <?php foreach ($labSessions as $labSession) {
+    $courseSectionId = $labSession->course_id . ':' . $labSession->section_id . ':' . $labSession->semester . ':' . $labSession->year;
+    $courseSectionName = $labSession->course_name . ': ' . $labSession->section_id . ' (Year ' . $labSession->year . '  Semester ' . $labSession->semester . ')';
+
+    $labSessionName = $courseSectionName . ' -> ' . $labSession->topic;
+    $labSessionId = $courseSectionId . ':' . $labSession->topic;
+    ?>
+                            <option value="<?php echo $labSessionId; ?>" <?php echo set_select('select-course-section', $labSessionId) ?>>
+                                <?php echo $labSessionName; ?>
+                            </option>
+                            <?php }?>
+                        </select>
                     </div>
 
 
                     <div style="padding-bottom:10px">
                         <label class="mr-sm-2" for="select-student-for-lab-session">Student</label>
                         <select class="custom-select" oninput="selectInputStd(event)" id="select-student-for-lab-session" name="select-student-for-lab-session">
-                        <option value="" selected>Choose Student</option>
-                        <option value="1">Student 1</option>
-                        <option value="2">Student 2</option>
-                        <option value="3">Student 3</option>
-                    </select>
+                            <option value="" selected>Choose Student</option>
+                            <option value="1">Student 1</option>
+                            <option value="2">Student 2</option>
+                            <option value="3">Student 3</option>
+                        </select>
                     </div>
 
                     <p style="text-align:right">
@@ -189,7 +206,7 @@
             }
             for (var y = 0; y < checkBox.length; y++) {
                 if (checkBox[y].value === event.target.value) {
-                    checkBox[y].checked = true;                          
+                    checkBox[y].checked = true;
                 }
             }
         }

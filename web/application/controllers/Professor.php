@@ -57,6 +57,8 @@ class Professor extends CI_Controller
 
     public function overview()
     {
+        $professor = $this->professor_model->getCurrentProfessor();
+
         $data = array(
             'navigationData' => getNavigationEntries('professor'),
             'view' => "pages/professor/overview",
@@ -69,14 +71,29 @@ class Professor extends CI_Controller
             ),
         );
 
-        $this->load->view('templates/dashboard', $data);
+        $data['viewData']['courseSections'] = $this->course_section_model->
+            getAssignedCourseSections($professor->employee_id, $professor->department_id);
 
+        $labSessionsRaw = $this->lab_session_model->
+            getLabSessionsOfProfessor($professor->department_id, $professor->employee_id);
+
+        $labSessions = array();
+        foreach ($labSessionsRaw as $session) {
+            $courseSectionId = $session->course_id . ':' . $session->section_id . ':' . $session->semester . ':' . $session->year;
+            if (!isset($labSessions[$courseSectionId])) {
+                $labSessions[$courseSectionId] = array();
+            }
+
+            array_push($labSessions[$courseSectionId], $session);
+        }
+        $data['viewData']['labSessions'] = $labSessions;
+        $this->load->view('templates/dashboard', $data);
     }
 
     public function courseSections()
     {
-        $courseFilter = $this->input->post('input-course-name');
         $professor = $this->professor_model->getCurrentProfessor();
+        $courseFilter = $this->input->post('input-course-name');
 
         // if this is set, you have to assign the section to professor
         $courseSectionToAssign = $this->input->post('select-course-section');
@@ -107,7 +124,7 @@ class Professor extends CI_Controller
         );
 
         $data['viewData']['courseSections'] = $this->course_section_model->
-            getCourseSections($professor->department_id, $courseFilter);
+            getAvailableCourseSections($professor->department_id, $courseFilter);
         $data['viewData']['assignedCourseSections'] = $this->course_section_model->
             getAssignedCourseSections($professor->employee_id, $professor->department_id);
 
@@ -188,12 +205,16 @@ class Professor extends CI_Controller
 
     public function assignGraduate()
     {
+        $professor = $this->professor_model->getCurrentProfessor();
 
         $data = array(
             'navigationData' => getNavigationEntries('professor'),
             'view' => "pages/professor/assignGraduate",
             'viewData' => array(),
         );
+
+        $data['viewData']['labSessions'] = $this->lab_session_model->
+            getLabSessionsOfProfessor($professor->department_id, $professor->employee_id);
 
         $this->load->view('templates/dashboard', $data);
 
