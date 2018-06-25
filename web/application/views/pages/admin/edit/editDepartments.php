@@ -8,56 +8,22 @@
     <h2 class="heading1">Departments</h2>
     <br>
 
-    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Department Details</p>
-
-    <div>
-        <table class="custom-table" id="department-show-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Location</th>
-                    <th>Phone</th>
-                    <th>Head Of Department</th>
-                    <th>Edit or Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>23345</td>
-                    <td>Name</td>
-                    <td>Location</td>
-                    <td>+98 345456767</td>
-                    <td>Mr. Bean</td>
-                    <td>
-                        <a href="<?php echo $viewData['urls']['editDept'] ?>/34" class="btn btn-sm btn-warning" role="button"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-sm btn-danger" role="button"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>23345</td>
-                    <td>Name</td>
-                    <td>Location</td>
-                    <td>+98 345456767</td>
-                    <td>Mr. Bean</td>
-                    <td>
-                        <a href="<?php echo $viewData['urls']['editDept'] ?>/34" class="btn btn-sm btn-warning" role="button"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-sm btn-danger" role="button"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <br>
-    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Add Department</p>
+    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Edit Department Details</p>
 
     <div class="container-fluid">
+        <form method="post" name="edit-department-form">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-1"></div> 
+            <div class="col-md-6">
+                <form method="post" name="edit-department-form">
 
-                <form method="post" name="add-department-form">
                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="input-dept-id">Department ID</label>
+                                <input type="text" class="form-control" id="input-dept-id" name="input-dept-id" aria-describedby="input-dept-idHelp" placeholder="Department ID" readonly>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="input-dept-name">Department Name</label>
@@ -65,6 +31,9 @@
                                 <small id="input-dept-nameHelp" class="form-text text-muted">Enter department name</small>
                             </div>
                         </div>
+                    </div>
+
+                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="input-dept-name">Department Location</label>
@@ -72,9 +41,6 @@
                                 <small id="input-dept-locationHelp" class="form-text text-muted">Enter department location</small>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="input-dept-name">Phone</label>
@@ -82,6 +48,9 @@
                                 <small id="input-dept-phoneHelp" class="form-text text-muted">Enter phone number</small>
                             </div>
                         </div>
+                    </div>
+
+                     <div class="row">
                         <div class="col-md-6">
                             <div style="padding-bottom:10px">
                                 <label class="mr-sm-2" for="select-prof">Head of Department</label>
@@ -93,9 +62,13 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            
+                        </div>
                     </div>
                     <p style="text-align:center">
-                        <button type="submit" name="add-department-form" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>&nbsp;Add Department</button>
+                        <a href="<?php echo $viewData['urls']['back_url']; ?>" class="btn btn-sm btn-secondary" role="button">Back</a>
+                        <button type="submit" name="edit-department-form" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>&nbsp;Edit Department</button>
                     </p>
                 </form>
                 <p class="error-text">
@@ -144,12 +117,12 @@
                         </tr>
                     </tbody>
                 </table>
-
             </div>
+            <div class="col-md-1"></div>
         </div>
-    </div>
-
-<script>
+        
+    </div> 
+    <script>
         
         function catCheckBoxCheck(className) {
             var checkBox = document.getElementsByClassName(className);
@@ -192,5 +165,4 @@
         }
 
     </script>
-
 </div>

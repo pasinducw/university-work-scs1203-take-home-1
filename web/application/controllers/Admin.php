@@ -32,7 +32,26 @@ class Admin extends CI_Controller
         $data = array(
             'navigationData' => getNavigationEntries('admin'),
             'view' => "pages/admin/departments",
-            'viewData' => array()
+            'viewData' => array(
+                'urls' => array(
+                    'editDept' => "editDepartments"
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function editDepartments($deptID)
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/edit/editDepartments",
+            'viewData' => array(
+                'urls' => array(
+                    'back_url' => "../departments"
+                )
+            )
         );
 
         $this->load->view('templates/dashboard', $data);

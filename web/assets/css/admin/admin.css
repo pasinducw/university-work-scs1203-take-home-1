@@ -1,0 +1,13 @@
+.custom-table {
+    text-align: center;
+}
+
+#department-show-table tbody tr td:last-child {
+    width: 90px;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+    top: -14px;
+    left: -7px;
+}
