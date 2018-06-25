@@ -8,16 +8,19 @@
     <div class="container-fluid">
 
         <div>
+            <!--
             <div style="width:300px">
+            <?php echo form_open('/professor/assignGraduate', array(), array('filter-student-assigned-lab' => true)); ?>
                 <form method="post" name="search-student-asigned-lab">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="input-student-asigned-id" placeholder="Student ID">
+                        <input type="text" class="form-control" name="filter-assigned-student-id" placeholder="Student ID">
                         <div class="input-group-append">
                             <button class="btn btn-primary" name="search-student-asigned-lab" type="submit">Search</button>
                         </div>
                     </div>
                 </form>
             </div>
+            -->
             <table class="student-asigned-lab-show-table">
                 <thead>
                     <tr>
@@ -28,44 +31,33 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($labSessions as $labSession) {?>
+                    <?php if (isset($labSession->conductor_id)) {?>
                     <tr>
-                        <td>1</td>
-                        <td>Nishan Wijethunga</td>
-                        <td>sf dgag dhtnjaja</td>
-                        <td>
-                            <p style="text-align:center;margin:0">
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Nishan Wijethunga</td>
-                        <td>sf dgag dhtnjaja</td>
-                        <td>
-                            <p style="text-align:center;margin:0">
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Nishan Wijethunga</td>
-                        <td>sf dgag dhtnjaja</td>
-                        <td>
-                            <p style="text-align:center;margin:0">
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </p>
-                        </td>
-                    </tr>
+                        <td><?php echo $labSession->conductor_id; ?></td>
+                        <td><?php echo $labSession->conductor_name; ?></td>
+    <?php
+$courseSectionId = $labSession->course_id . ':' . $labSession->section_id . ':' . $labSession->semester . ':' . $labSession->year;
+    $courseSectionName = $labSession->course_name . ': ' . $labSession->section_id . ' (Year ' . $labSession->year . '  Semester ' . $labSession->semester . ')';
 
+    $labSessionName = $courseSectionName . ' -> ' . $labSession->topic;
+    $labSessionId = $courseSectionId . ':' . $labSession->topic;
+    ?>
+                        <td><?php echo $labSessionName; ?></td>
+                        <td>
+                            <p style="text-align:center;margin:0">
+                            <?php echo form_open('/professor/assignGraduate', array(), array('delete-session-conductor-request' => true)); ?>
+                            <input type="hidden" name="delete-request-session-id" value="<?php echo $labSessionId; ?>">
+                            <input type="hidden" name="delete-request-student-id" value="<?php echo $labSession->conductor_id; ?>">
 
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                            </p>
+                        </td>
+                    </tr>
+                    <?php }}?>
                 </tbody>
             </table>
         </div>
@@ -75,14 +67,14 @@
         <br>
         <div class="row">
             <div class="col-md-8" style="border-right:1px solid rgb(185, 185, 185);">
-
-                <form method="post" name="add-student-for-lab-session-form">
+                <?php echo form_open('/professor/assignGraduate', array(), array('assign-post-graduate-request' => true)); ?>
                     <div style="padding-bottom:10px">
                         <label class="mr-sm-2" for="select-labsession">Lab Session</label>
                         <select class="custom-select" id="select-labsession" name="select-labsession">
-                            <option value="" <?php echo set_select('select-course-section', '', true); ?> selected>Choose Lab Session</option>
-                            <?php foreach ($labSessions as $labSession) {
-    $courseSectionId = $labSession->course_id . ':' . $labSession->section_id . ':' . $labSession->semester . ':' . $labSession->year;
+                            <?php foreach ($labSessions as $labSession) {?>
+
+<?php
+$courseSectionId = $labSession->course_id . ':' . $labSession->section_id . ':' . $labSession->semester . ':' . $labSession->year;
     $courseSectionName = $labSession->course_name . ': ' . $labSession->section_id . ' (Year ' . $labSession->year . '  Semester ' . $labSession->semester . ')';
 
     $labSessionName = $courseSectionName . ' -> ' . $labSession->topic;
@@ -99,25 +91,24 @@
                     <div style="padding-bottom:10px">
                         <label class="mr-sm-2" for="select-student-for-lab-session">Student</label>
                         <select class="custom-select" oninput="selectInputStd(event)" id="select-student-for-lab-session" name="select-student-for-lab-session">
-                            <option value="" selected>Choose Student</option>
-                            <option value="1">Student 1</option>
-                            <option value="2">Student 2</option>
-                            <option value="3">Student 3</option>
+                            <?php foreach ($students as $student) {?>
+                            <option value="<?php echo $student->student_id; ?>">
+                                <?php echo $student->first_name . ' ' . $student->last_name; ?>
+                            </option>
+                            <?php }?>
                         </select>
                     </div>
 
                     <p style="text-align:right">
                         <button type="submit" class="btn btn-sm btn-warning">Add Student</button>
                     </p>
-
                 </form>
-                <p class="error-text">Error</p>
             </div>
             <div class="col-md-4">
                 <div>
-                    <form method="post" name="search-student-for-asign-lab">
+                <?php echo form_open('/professor/assignGraduate', array(), array('post-graduate-filter-request' => true)); ?>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="input-student-id" placeholder="Student ID">
+                            <input type="text" class="form-control" name="filter-side-student-list" placeholder="Student ID">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" name="search-student-for-asign-lab" type="submit">Search</button>
                             </div>
@@ -128,42 +119,29 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>ID</th>
+                            <th>Postgraduate Student ID</th>
                             <th>Name</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($students as $student) {?>
                         <tr>
                             <td>
                                 <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
-                                    <input type="checkbox" onclick="selectStd(event)" class="custom-control-input post-grad-check-box" id="std1" value="1" style="margin: 0">
-                                    <label class="custom-control-label" for="std1" style="margin: 0"></label>
+                                    <input type="checkbox" onclick="selectStd(event)" class="custom-control-input post-grad-check-box"
+                                        id="<?php echo $student->student_id; ?>" value="<?php echo $student->student_id; ?>" style="margin: 0">
+                                    <label class="custom-control-label" for="<?php echo $student->student_id; ?>"
+                                        style="margin: 0"></label>
                                 </div>
                             </td>
-                            <td>1</td>
-                            <td>Student 1</td>
-                        </tr>
-                        <tr>
                             <td>
-                                <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
-                                    <input type="checkbox" onclick="selectStd(event)" class="custom-control-input post-grad-check-box" id="std2" value="2" style="margin: 0">
-                                    <label class="custom-control-label" for="std2" style="margin: 0"></label>
-                                </div>
+                                <?php echo $student->student_id; ?>
                             </td>
-                            <td>2</td>
-                            <td>Student 2</td>
-                        </tr>
-                        <tr>
                             <td>
-                                <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
-                                    <input type="checkbox" onclick="selectStd(event)" class="custom-control-input post-grad-check-box" id="std3" value="3" style="margin: 0">
-                                    <label class="custom-control-label" for="std3" style="margin: 0"></label>
-                                </div>
+                                <?php echo $student->first_name . ' ' . $student->last_name; ?>
                             </td>
-                            <td>3</td>
-                            <td>Student 3</td>
                         </tr>
-
+                        <?php }?>
                     </tbody>
                 </table>
             </div>

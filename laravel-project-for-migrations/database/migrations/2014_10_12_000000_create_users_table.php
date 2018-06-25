@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable(false);
             $table->string('last_name')->nullable(false);
             $table->string('phone')->nullable();
-            $table->boolean('is_admin')->default(false);  
+            $table->string('role')->default('undergraduate');  
         });
     }
 

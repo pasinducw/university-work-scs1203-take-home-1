@@ -3,15 +3,33 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Professor extends CI_Controller
 {
+
+    private $user; // current user
+    private $professor; // current professor
+
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->model('text_book_model');
+        $this->load->model('book_model');
+        $this->load->model('student_model');
+        $this->load->model('course_model');
         $this->load->model('course_section_model');
         $this->load->model('lab_session_model');
         $this->load->model('professor_model');
         $this->load->model('user_model');
+
         $this->load->helper('form');
         $this->load->library('form_validation');
+
+        try {
+            $this->user = $this->user_model->getCurrentUser();
+            $this->professor = $this->professor_model->getCurrentProfessor();
+        } catch (Exception $ex) {
+            $this->user_model->logout();
+            redirect(base_url('/signin'));
+        }
     }
 
     public function index()
@@ -33,7 +51,7 @@ class Professor extends CI_Controller
                 $lastName = $this->input->post('input-lname');
                 $phone = $this->input->post('input-contact-no');
 
-                $this->user_model->updateUser($user['user_id'], $firstName, $lastName, $phone);
+                $this->user_model->updateUser($user->user_id, $firstName, $lastName, $phone);
             }
         }
 
@@ -48,7 +66,7 @@ class Professor extends CI_Controller
             'viewData' => array(),
         );
 
-        $data['viewData']['user'] = $this->user_model->getUser($user['user_id']);
+        $data['viewData']['user'] = $this->user_model->getUser($user->user_id);
         $data['viewData']['formSubmissionLink'] = '/professor/profile';
 
         $this->load->view('templates/dashboard', $data);
@@ -57,7 +75,7 @@ class Professor extends CI_Controller
 
     public function overview()
     {
-        $professor = $this->professor_model->getCurrentProfessor();
+        $professor = $this->professor;
 
         $data = array(
             'navigationData' => getNavigationEntries('professor'),
@@ -70,6 +88,9 @@ class Professor extends CI_Controller
                 ),
             ),
         );
+
+        $books = $this->book_model->getBooksOfProfessor($professor->employee_id);
+        $data['viewData']['books'] = $books;
 
         $data['viewData']['courseSections'] = $this->course_section_model->
             getAssignedCourseSections($professor->employee_id, $professor->department_id);
@@ -135,11 +156,39 @@ class Professor extends CI_Controller
 
     public function textBooks()
     {
+        $professor = $this->professor;
+
+        $this->form_validation->set_rules('select-course', 'Course', 'required');
+        $this->form_validation->set_rules('select-book', 'Book', 'required');
+        if ($this->input->post('add-text-book-request')) {
+            $course = $this->input->post('select-course');
+            $book = $this->input->post('select-book');
+            $this->text_book_model->addTextBookForCourse($professor->employee_id, $course, $book);
+        }
+
+        if ($this->input->post('delete-text-book-request')) {
+            $course = $this->input->post('delete-text-book-course');
+            $book = $this->input->post('delete-text-book-book_id');
+            $this->text_book_model->removeTextBookFromCourse($professor->employee_id, $course, $book);
+        }
+
         $data = array(
             'navigationData' => getNavigationEntries('professor'),
             'view' => "pages/professor/textBooks",
             'viewData' => array(),
         );
+
+        $textBookTitleFilter = $this->input->post('input-filter-text-book-title');
+        $textBooks = $this->text_book_model->getTextBooks($professor->employee_id, $textBookTitleFilter);
+
+        $bookTitleFilter = $this->input->post('input-filter-book-title');
+        $books = $this->book_model->getAllBooks($bookTitleFilter);
+
+        $courses = $this->course_model->getCourses($professor->department_id);
+
+        $data['viewData']['books'] = $books;
+        $data['viewData']['textBooks'] = $textBooks;
+        $data['viewData']['courses'] = $courses;
 
         $this->load->view('templates/dashboard', $data);
     }
@@ -207,15 +256,49 @@ class Professor extends CI_Controller
     {
         $professor = $this->professor_model->getCurrentProfessor();
 
+        if ($this->input->post('assign-post-graduate-request')) {
+            $sessionId = $this->input->post('select-labsession');
+
+            $courseId = strtok($sessionId, ':');
+            $sectionId = strtok(':');
+            $semester = strtok(':');
+            $year = strtok(':');
+            $topic = strtok(':');
+
+            $studentId = $this->input->post('select-student-for-lab-session');
+
+            $this->lab_session_model->setConductorForSession($courseId,
+                $sectionId, $semester, $year, $topic, $studentId);
+        }
+
+        if ($this->input->post('delete-session-conductor-request')) {
+
+            $sessionId = $this->input->post('delete-request-session-id');
+            $courseId = strtok($sessionId, ':');
+            $sectionId = strtok(':');
+            $semester = strtok(':');
+            $year = strtok(':');
+            $topic = strtok(':');
+
+            $studentId = $this->input->post('delete-request-student-id');
+
+            $this->lab_session_model->setConductorForSession($courseId,
+                $sectionId, $semester, $year, $topic, null);
+        }
+
         $data = array(
             'navigationData' => getNavigationEntries('professor'),
             'view' => "pages/professor/assignGraduate",
             'viewData' => array(),
         );
+        $studentFilter = $this->input->post('filter-side-student-list');
+        $students = $this->student_model->getPostGraduates($studentFilter);
 
-        $data['viewData']['labSessions'] = $this->lab_session_model->
+        $labSessions = $this->lab_session_model->
             getLabSessionsOfProfessor($professor->department_id, $professor->employee_id);
 
+        $data['viewData']['labSessions'] = $labSessions;
+        $data['viewData']['students'] = $students;
         $this->load->view('templates/dashboard', $data);
 
     }

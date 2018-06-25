@@ -21,13 +21,13 @@ class Book_model extends CI_Model
         return $query->result();
     }
 
-    public function addBook($title, $publisher, $isbn, $copyCount)
+    public function addBook($title, $publisher, $isbn, $year, $copyCount)
     {
         $sql = '
-            INSERT INTO books (title, publisher, book_id, copies) VALUES
-            (?, ?, ?, ?)
+            INSERT INTO books (title, publisher, book_id, year, copies) VALUES
+            (?, ?, ?, ?, ?)
         ';
-        $this->db->query($sql, array($title, $publisher, $isbn, $copyCount));
+        $this->db->query($sql, array($title, $publisher, $isbn, $year, $copyCount));
     }
 
     public function removeBook($isbn)
@@ -81,5 +81,19 @@ class Book_model extends CI_Model
         ';
         $query = $this->db->query($sql);
         return $query->result();
+    }
+
+    public function getBooksOfProfessor($professorId)
+    {
+        $sql = '
+            SELECT 
+                book.book_id as book_id, book.title as title
+            FROM professors as professor
+            INNER JOIN authors as author on author.professor_id = professor.employee_id
+            INNER JOIN book_authorships as authorship on authorship.author_name = author.author_name
+            INNER JOIN books as book on book.book_id = authorship.book_id
+        ';
+        $result = $this->db->query($sql, array($professorId))->result();
+        return $result;
     }
 }
