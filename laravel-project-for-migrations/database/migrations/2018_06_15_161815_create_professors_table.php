@@ -29,9 +29,9 @@ class CreateProfessorsTable extends Migration
                 ->on('departments')
                 ->onDelete('restrict');
 
-            $table->foreign('author_name', 'fk_professors_to_authors')
-                ->references('author_name')
-                ->on('authors');
+            // $table->foreign('author_name', 'fk_professors_to_authors')
+            //     ->references('author_name')
+            //     ->on('authors');
         });
     }
 

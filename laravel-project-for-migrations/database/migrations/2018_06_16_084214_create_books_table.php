@@ -17,6 +17,7 @@ class CreateBooksTable extends Migration
             $table->string('book_id')->nullable(false);
             $table->string('title');
             $table->string('publisher');
+            $table->unsignedInteger('copies');
             $table->unsignedInteger('year');
 
             $table->primary('book_id', 'pk_books');
