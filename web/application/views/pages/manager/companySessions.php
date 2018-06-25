@@ -90,7 +90,7 @@
         </table>
     </div>
 
-    <br>
+    <!-- <br>
     <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Add Company Sessions</p>
 
     <div class="container-fluid">
@@ -170,5 +170,5 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
