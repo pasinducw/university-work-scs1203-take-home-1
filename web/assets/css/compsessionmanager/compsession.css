@@ -1,0 +1,67 @@
+.heading1 {
+    text-align: center;
+}
+
+.sesction1 {
+    background-color: #f6f6f6;
+    padding: 3px 0 3px 10px;
+}
+
+#company-session-show-table tr th:last-child {
+    width: 90px;
+}
+
+#company-session-show-table tr th:first-child {
+    width: 50px
+}
+
+#year-sem-show-table tbody tr td ul {
+    margin: 0
+}
+
+.detail {
+    background-color: rgb(231, 231, 231);
+    padding: 3px 5px 3px 5px
+}
+
+#enrolled-students-show-table {
+    text-align: center;
+}
+
+#company-session-show-table {
+    text-align: center
+}
+
+#company-session-show-table .student-eval {
+    background-color: rgb(1, 1, 102);
+    font-size: 15px;
+    padding: 3px 5px 3px 5px;
+    font-weight: bold;
+}
+
+.student-eval i {
+    color: blue
+}
+
+.student-eval-s-1 span:first-child {
+    color: #f6f6f6;
+}
+
+.student-eval-s-1 span:last-child {
+    color: #f6f6f691
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+    top: -14px;
+    left: -7px;
+}
+
+#evaluation-show-table,
+#student-show-table {
+    text-align: center;
+}
+
+.edit-evsl-std-name {
+    padding: 3px 5px 3px 5px;
+}
