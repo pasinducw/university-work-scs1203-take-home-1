@@ -21,19 +21,54 @@ if (!function_exists('getNavigationEntries')) {
 
     function navigation_getAdminNavs()
     {
-        $entries = array();
-
-        $entries['profile'] = array(
-            'name' => 'Profile',
-            'url' => base_url('admin/profile'),
-            'icon' => 'user',
+        $entries = array(
+            'departments' => array(
+                'name' => 'Departments',
+                'url' => base_url('admin/departments'),
+                'icon' => 'home',
+            ),
+            'departmentsHeads' => array(
+                'name' => 'Department Heads',
+                'url' => base_url('admin/departmentsHeads'),
+                'icon' => 'star',
+            ),
+            'professors' => array(
+                'name' => 'Professors',
+                'url' => base_url('admin/professors'),
+                'icon' => 'feather',
+            ),
+            'students' => array(
+                'name' => 'Students',
+                'url' => base_url('admin/students'),
+                'icon' => 'github',
+            ),
+            'courses' => array(
+                'name' => 'Courses',
+                'url' => base_url('admin/courses'),
+                'icon' => 'award',
+            ),
+            'courseSections' => array(
+                'name' => 'Course Sections',
+                'url' => base_url('admin/courseSections'),
+                'icon' => 'layers',
+            ),
+            'companySession' => array(
+                'name' => 'Company Sessions',
+                'url' => base_url('admin/companySession'),
+                'icon' => 'briefcase',
+            ),
+            'userCreation' => array(
+                'name' => 'User Creation',
+                'url' => base_url('admin/userCreation'),
+                'icon' => 'user-plus',
+            ),
+            'profile' => array(
+                'name' => 'Profile',
+                'url' => base_url('admin/profile'),
+                'icon' => 'user',
+            )
         );
 
-        $entries['departments'] = array(
-            'name' => 'Departments',
-            'url' => base_url('admin/departments'),
-            'icon' => 'tablet',
-        );
         return $entries;
     }
 

@@ -202,7 +202,7 @@
     <script>
         var time_inputs = $('#input-return-date');
         time_inputs.datetimepicker({
-            format: 'hh:mm'
+            format: 'YYYY-MM-DD'
         });
     </script>
     <script>
