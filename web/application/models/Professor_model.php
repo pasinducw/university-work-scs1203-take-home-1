@@ -38,4 +38,15 @@ class Professor_model extends CI_Model
         return $result;
     }
 
+    public function getAllProfessors($filter = '')
+    {
+        $this->db->select('*');
+        $this->db->from('professors_view');
+        $this->db->like('first_name', $filter);
+        $this->db->or_like('last_name', $filter);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 }

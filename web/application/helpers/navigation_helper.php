@@ -111,6 +111,11 @@ if (!function_exists('getNavigationEntries')) {
                 'url' => base_url('librarian/book'),
                 'icon' => 'book-open'
             ),
+            'authors' => array(
+                'name' => 'Authors',
+                'url' => base_url('librarian/author'),
+                'icon' => 'users'
+            ),
             'bookBorrowAndReturn' => array(
                 'name' => 'Borrow & Return Books',
                 'url' => base_url('librarian/borrowAndReturnBook'),

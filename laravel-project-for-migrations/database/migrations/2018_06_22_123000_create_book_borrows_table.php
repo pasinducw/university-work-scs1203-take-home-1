@@ -16,6 +16,7 @@ class CreateBookBorrowsTable extends Migration
         Schema::create('book_borrows', function (Blueprint $table) {
             $table->string('book_id')->nullable(false);
             $table->string('student_id')->nullable(false);
+            $table->boolean('returned')->default(false);
 
             $table->foreign('book_id', 'fk_book_borrows_to_books')
                 ->references('book_id')

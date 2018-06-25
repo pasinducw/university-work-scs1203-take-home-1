@@ -9,6 +9,7 @@
 
     <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Books Basic Details</p>
 
+    <!--
     <div style="width:300px">
         <form method="post" name="search-books-form">
             <div class="input-group mb-3">
@@ -18,42 +19,48 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div>-->
 
     <table class="custom-table" id="books-basic-detail-show-table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Title</th>
                 <th>Publisher</th>
                 <th>ISBN</th>
+                <th>Authors</th>
                 <th>No. Of Coppies</th>
                 <th>Available</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
+            <?php foreach ($books as $book) {?>
             <tr>
-                <td>1</td>
-                <td>Title</td>
-                <td>Pub</td>
-                <td>32425636</td>
-                <td>12</td>
-                <td><h5><span class="badge badge-danger">0</span></h5></td>
+                <td><?php echo $book->title; ?></td>
+                <td><?php echo $book->publisher; ?></td>
+                <td><?php echo $book->book_id; ?></td>
+                <td><?php echo $book->authors; ?></td>
+                <td><?php echo $book->copies; ?></td>
+                <td><?php echo $book->available; ?></td>
+                <td>
+                    <?php echo form_open('/librarian/book', array(), array('delete-book-request' => true)) ?>
+                    <input type="hidden" name="delete-book-isbn" value="<?php echo $book->book_id ?>" />
+                    <p style="text-align:center;margin:0">
+                        <button class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </p>
+                    </form>
+                </td>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Title</td>
-                <td>Pub</td>
-                <td>32425636</td>
-                <td>12</td>
-                <td><h5><span class="badge badge-success">7</span></h5></td>
-            </tr>
+            <?php }?>
         </tbody>
     </table>
 
     <br>
     <br>
 
+    <!--
     <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Not Returned Books</p>
 
     <table class="custom-table" id="books-not-returned-detail-show-table">
@@ -93,41 +100,29 @@
                 <td>Student</td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
 
     <br>
     <br>
     <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Text Books</p>
 
-    <table class="custom-table" id="books-text-book-show-table">
+    <table class="custom-table" id="books-basic-detail-show-table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
+                <th>Book</th>
                 <th>Course</th>
                 <th>Used By</th>
+                
             </tr>
         </thead>
         <tbody>
+            <?php foreach ($textBooks as $book) {?>
             <tr>
-                <td>1</td>
-                <td>Title</td>
-                <td>Course</td>
-                <td>name | name</td>
+                <td><?php echo $book->title . ' by ' . $book->authors; ?> </td>
+                <td><?php echo $book->course; ?></td>
+                <td><?php echo $book->professor; ?></td>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Title</td>
-                <td>Course</td>
-                <td>name | name</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Title</td>
-                <td>Course</td>
-                <td>name | name</td>
-            </tr>
-            
+            <?php }?>
         </tbody>
     </table>
 

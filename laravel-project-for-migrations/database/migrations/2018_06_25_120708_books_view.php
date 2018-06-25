@@ -18,9 +18,11 @@ class BooksView extends Migration
                 book.book_id as book_id, book.title as title, 
                 book.publisher as publisher, book.year as year, 
                 book.copies as copies,
-                GROUP_CONCAT(authorship.author_name ORDER BY authorship.author_name SEPARATOR ', ') AS authors
+                GROUP_CONCAT(authorship.author_name ORDER BY authorship.author_name SEPARATOR ', ') AS authors,
+                (book.copies - COUNT(borrow.student_id)) as available
             FROM books as book
             LEFT JOIN book_authorships as authorship ON (authorship.book_id = book.book_id)
+            LEFT JOIN book_borrows as borrow ON (borrow.book_id = book.book_id AND borrow.returned = false)
             GROUP BY book.book_id
         ");
     }
