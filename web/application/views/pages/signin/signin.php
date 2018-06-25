@@ -50,11 +50,11 @@
                 </svg>
               </span>
             </p>
-            <div class="error-cont">
+            <div class="error-cont" id="login-error-cont">
               <?php echo validation_errors(); ?>
-              <p class="error-text">
-                <?php echo isset($signin_error) ? $signin_error : ''; ?>
-              </p>
+              
+                <?php echo isset($signin_error) ? '<p class="error-text">'.$signin_error.'</p>' : ''; ?>
+              
             </div>
             <p class="login-btn-cont">
               <button class="login-btn" type="submit" name="login-form">Log In</button>
@@ -66,4 +66,47 @@
       </div>
     </div>
   </dir>
+  <script src="<?php echo base_url('assets/jquery.js'); ?>"></script>
+  <script>
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+
+      $(document).ready(function(){
+        $('#login-user-name,#login-user-password').on('keypress',function(){
+          $('#login-error-cont').html('');
+        });
+      });
+
+		</script>
 </div>
