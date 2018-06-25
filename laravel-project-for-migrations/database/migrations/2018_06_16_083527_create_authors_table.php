@@ -16,6 +16,12 @@ class CreateAuthorsTable extends Migration
         Schema::create('authors', function (Blueprint $table) {
             $table->string('author_name')->nullable(false);
             $table->primary('author_name', 'pk_authors');
+            $table->string('professor_id')->nullable(true);
+
+            $table->foreign('professor_id', 'fk_authors_to_professors')
+                ->references('employee_id')
+                ->on('professors')
+                ->onDelete('cascade');
         });
     }
 
