@@ -13,7 +13,8 @@ class Course_section_model extends CI_Model
         $this->load->library('session');
     }
 
-    public function getCourseSections($departmentId, $courseName = '')
+    // returns still unassigned course sections
+    public function getAvailableCourseSections($departmentId, $courseName = '')
     {
         $sql = '
         SELECT
@@ -25,7 +26,7 @@ class Course_section_model extends CI_Model
         FROM departments as department
 
         INNER JOIN courses as course ON (course.department_id = department.department_id AND course.name LIKE ?)
-        INNER JOIN sections as section ON (section.course_id = course.course_id)
+        INNER JOIN sections as section ON (section.course_id = course.course_id AND section.professor_id IS NULL)
 
         WHERE department.department_id = ?
         ';
@@ -34,6 +35,7 @@ class Course_section_model extends CI_Model
         return $query->result();
     }
 
+    // returns course sections assigned to professor
     public function getAssignedCourseSections($professorId, $departmentId)
     {
         $sql = '
@@ -55,6 +57,7 @@ class Course_section_model extends CI_Model
         return $query->result();
     }
 
+    // assigns course section to self
     public function assignCourseSection($professor_id, $course_id, $section_id, $semester, $year)
     {
         $sql = '
@@ -66,6 +69,7 @@ class Course_section_model extends CI_Model
         $this->db->query($sql, array($professor_id, $course_id, $section_id, $semester, $year));
     }
 
+    // unassign course section from self
     public function unassignCourseSection($professor_id, $course_id, $section_id, $semester, $year)
     {
         $sql = '

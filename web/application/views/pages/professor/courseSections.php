@@ -9,7 +9,6 @@
     <br>
 
     <div class="container-fluid">
-
         <div style="width:300px">
             <?php echo form_open('/professor/courseSections'); ?>
                 <div class="input-group mb-3">
@@ -22,7 +21,7 @@
                 </div>
             </form>
         </div>
-
+        <label class="mr-sm-2" for="select-book">Unassigned Course Section</label>
         <div>
             <table class="custom-table" id="show-course-section">
                 <thead>

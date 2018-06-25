@@ -61,7 +61,7 @@ if (!function_exists('getNavigationEntries')) {
                 'icon' => 'book'
             ),
             'asignGrad' => array(
-                'name' => 'Assign Graduates For Lab &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sessions',
+                'name' => 'Lab Session Conductors',
                 'url' => base_url('professor/assignGraduate'),
                 'icon' => 'git-branch'
             ),

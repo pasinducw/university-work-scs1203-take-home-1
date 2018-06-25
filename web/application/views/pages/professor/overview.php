@@ -15,10 +15,9 @@
 
             <div class="container-fluid">
                 <ul class="course-details">
-                    <li><p>Course | Semester | Year</p></li>
-                    <li><p>Course | Semester | Year</p></li>
-                    <li><p>Course | Semester | Year</p></li>
-                    <br>
+                    <?php foreach ($courseSections as $section) {?>
+                    <li><p><?php echo $section->name; ?> | Semester <?php echo $section->semester; ?> | Year <?php echo $section->year; ?></p></li>
+                    <?php }?>                    <br>
                     <p>
                         <a href="<?php echo $viewData['links']['change_course_section']; ?>" class="btn btn-secondary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i>&nbsp;Change Course Sections</a>
                     </p>
@@ -26,29 +25,23 @@
             </div>
 
             <br>
-            <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Lab Sections</p>
+            <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Lab Sessions</p>
 
             <div class="container-fluid">
                 <ul class="course-lab-details">
-                    <li>
-                        <p>Course | Semester | Year</p>
-                        <ul>
-                            <li>Lab Session 1</li>
-                            <li>Lab Session 2</li>
-                            <li>Lab Session 3</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p>Course | Semester | Year</p>
-                        <ul>
-                            <li>Lab Session 1</li>
-                            <li>Lab Session 2</li>
-                        </ul>
-                    </li>
-                    <li><p>Course | Semester | Year</p></li>
+                    <?php foreach ($labSessions as $key => $section) {?>
+                        <li>
+                            <p><?php echo $section[0]->course_name; ?> | Semester <?php echo $section[0]->semester; ?> | Year <?php echo $section[0]->year; ?></p>
+                            <ul>
+                                <?php foreach ($section as $session) {?>
+                                <li><?php echo $session->topic; ?></li>
+                                <?php }?>
+                            </ul>
+                        </li>
+                    <?php }?>
                     <br>
                     <p>
-                        <a href="<?php echo $viewData['links']['change_lab_sessions']; ?>" class="btn btn-secondary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i>&nbsp;Change Lab Sections</a>
+                        <a href="<?php echo $viewData['links']['change_lab_sessions']; ?>" class="btn btn-secondary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i>&nbsp;Change Lab Sessions</a>
                     </p>
                 </ul>
             </div>
