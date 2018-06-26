@@ -45,42 +45,45 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
 
-                <div style="padding-bottom:10px">
-                    <label class="mr-sm-2" for="select-prof">Department</label>
-                    <select class="custom-select" id="select-department" name="select-department">
-                        <option value="" selected>Choose Department</option>
-                        <option value="1">Department 1</option>
-                        <option value="2">Department 2</option>
-                        <option value="3">Department 3</option>
-                    </select>
-                </div>
+                <form method="post" name="add-course-form">
+                    <div style="padding-bottom:10px">
+                        <label class="mr-sm-2" for="select-prof">Department</label>
+                        <select class="custom-select" id="select-department" name="select-department">
+                            <option value="" selected>Choose Department</option>
+                            <option value="1">Department 1</option>
+                            <option value="2">Department 2</option>
+                            <option value="3">Department 3</option>
+                        </select>
+                    </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="">Course Name</label>
-                            <input type="text" class="form-control" id="input-course-name" name="input-course-name" aria-describedby="input-course-nameHelp" placeholder="Coursr Name">
-                            <small id="input-course-nameHelp" class="form-text text-muted">Enter course name.</small>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Course Name</label>
+                                <input type="text" class="form-control" id="input-course-name" name="input-course-name" aria-describedby="input-course-nameHelp" placeholder="Coursr Name">
+                                <small id="input-course-nameHelp" class="form-text text-muted">Enter course name.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Creadit Hours</label>
+                                <input type="text" class="form-control" id="input-creadit-hour" name="input-creadit-hour" aria-describedby="input-creadit-hourHelp" placeholder="Creadit Hours">
+                                <small id="input-creadit-hourHelp" class="form-text text-muted">Enter .</small>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="">Creadit Hours</label>
-                            <input type="text" class="form-control" id="input-creadit-hour" name="input-creadit-hour" aria-describedby="input-creadit-hourHelp" placeholder="Creadit Hours">
-                            <small id="input-creadit-hourHelp" class="form-text text-muted">Enter .</small>
-                        </div>
+
+                    <div class="form-group">
+                        <label for="">College</label>
+                        <input type="text" class="form-control" id="input-college" name="input-college" aria-describedby="input-collegeHelp" placeholder="College">
+                        <small id="input-collegerHelp" class="form-text text-muted">Enter college.</small>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="">College</label>
-                    <input type="text" class="form-control" id="input-college" name="input-college" aria-describedby="input-collegeHelp" placeholder="College">
-                    <small id="input-collegerHelp" class="form-text text-muted">Enter college.</small>
-                </div>
+                    <p style="text-align:center">
+                        <button class="btn btn-sm btn-success" type="submit" name="add-course-form"><i class="fa fa-plus"></i>&nbsp;Add Course</button>
+                    </p>
+                </form>
 
-                <p style="text-align:center">
-                    <button class="btn btn-sm btn-success" role="button"><i class="fa fa-plus"></i>&nbsp;Add Course</button>
-                </p>
             </div>
             <div class="col-md-3"></div>
         </div>
