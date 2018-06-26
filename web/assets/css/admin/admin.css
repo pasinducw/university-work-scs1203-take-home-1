@@ -11,3 +11,13 @@
     top: -14px;
     left: -7px;
 }
+
+.dptmnt {
+    background-color: rgb(202, 201, 201);
+    padding: 3px 5px 3px 5px;
+}
+
+.dptmnt-head-order {
+    background-color: rgb(202, 202, 202);
+    padding: 3px 5px 3px 5px;
+}
