@@ -125,7 +125,48 @@
     <br>
      <p style="text-align:right">
         <a href="../<?php echo $viewData['urls']['back_url'] ?>" class="btn btn-sm btn-dark" role="button">Back</a>
-        
     </p>
+    <script>
+        
+        function catCheckBoxCheck(className) {
+            var checkBox = document.getElementsByClassName(className);
+            for (var y = 0; y < checkBox.length; y++) {
+                if (checkBox[y].checked) {
+                    return true;
+                }
+            }
+        }
 
+        function selectProf(event){
+            if (catCheckBoxCheck(event.target.className)) {
+                var checkBox = document.getElementsByClassName(event.target.className);
+                for (var y = 0; y < checkBox.length; y++) {
+                    if (checkBox[y].checked) {
+                        checkBox[y].checked = false;
+                    }
+                }
+                event.target.checked = true;
+
+                document.getElementById('select-prof').value = event.target.value;
+
+            }else{
+                document.getElementById('select-prof').value = "";
+            }
+        }
+        
+        function selectInputprof(event) {
+            var checkBox = document.getElementsByClassName('custom-control-input prof-check-box');
+            for (var y = 0; y < checkBox.length; y++) {
+                if (checkBox[y].checked) {
+                    checkBox[y].checked = false;
+                }
+            }
+            for (var y = 0; y < checkBox.length; y++) {
+                if (checkBox[y].value === event.target.value) {
+                    checkBox[y].checked = true;                          
+                }
+            }
+        }
+
+    </script>
 </div>

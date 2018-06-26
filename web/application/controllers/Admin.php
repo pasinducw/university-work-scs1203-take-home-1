@@ -124,7 +124,26 @@ class Admin extends CI_Controller
         $data = array(
             'navigationData' => getNavigationEntries('admin'),
             'view' => "pages/admin/professors",
-            'viewData' => array()
+            'viewData' => array(
+                'urls' => array(
+                    'editProf' => 'editProfessor'
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function editProfessor($profID)
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/edit/editProfessor",
+            'viewData' => array(
+                'urls' => array(
+                    'back_url' => 'professors'
+                )
+            )
         );
 
         $this->load->view('templates/dashboard', $data);
@@ -146,7 +165,25 @@ class Admin extends CI_Controller
         $data = array(
             'navigationData' => getNavigationEntries('admin'),
             'view' => "pages/admin/courses",
-            'viewData' => array()
+            'viewData' => array(
+                'urls' => array(
+                    'editCourse' => "editCourse"
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function editCourse($courseID){
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/edit/editCourse",
+            'viewData' => array(
+                'urls' => array(
+                    'back_url' => "courses"
+                )
+            )
         );
 
         $this->load->view('templates/dashboard', $data);

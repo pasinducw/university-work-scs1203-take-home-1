@@ -8,44 +8,14 @@
     <h2 class="heading1">Courses</h2>
     <br>
 
-    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Course Details</p>
+    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Edit Course</p>
 
-    <table class="custom-table" id="course-show-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Creadit Hours</th>
-                <th>College</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>343</td>
-                <td>name</td>
-                <td>Department</td>
-                <td>20</td>
-                <td>College</td>
-                <td>
-                    <a href="<?php echo $viewData['urls']['editCourse'] ?>/345" class="btn btn-sm btn-warning" role="button"><i class="fa fa-edit"></i></a>
-                    <a href="" class="btn btn-sm btn-danger" role="button"><i class="fa fa-trash"></i></a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <br>
-
-    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Add Course</p>
-
-    <div class="container-fluid">
+        <div class="container-fluid">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
 
-                <form method="post" name="add-course-form">
+                <form method="post" name="edit-course-form">
                     <div style="padding-bottom:10px">
                         <label class="mr-sm-2" for="select-prof">Department</label>
                         <select class="custom-select" id="select-department" name="select-department">
@@ -80,7 +50,8 @@
                     </div>
 
                     <p style="text-align:center">
-                        <button class="btn btn-sm btn-success" type="submit" name="add-course-form"><i class="fa fa-plus"></i>&nbsp;Add Course</button>
+                        <a href="../<?php echo $viewData['urls']['back_url'] ?>" class="btn btn-sm btn-dark">Back</a>
+                        <button class="btn btn-sm btn-warning" type="submit" name="edit-course-form"><i class="fa fa-edit"></i>&nbsp;Edit Course</button>
                     </p>
                 </form>
 
@@ -89,8 +60,5 @@
         </div>
     </div>
 
+
 </div>
-
-
-
-
