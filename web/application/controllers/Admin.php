@@ -165,7 +165,25 @@ class Admin extends CI_Controller
         $data = array(
             'navigationData' => getNavigationEntries('admin'),
             'view' => "pages/admin/courses",
-            'viewData' => array()
+            'viewData' => array(
+                'urls' => array(
+                    'editCourse' => "editCourse"
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function editCourse($courseID){
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/edit/editCourse",
+            'viewData' => array(
+                'urls' => array(
+                    'back_url' => "courses"
+                )
+            )
         );
 
         $this->load->view('templates/dashboard', $data);

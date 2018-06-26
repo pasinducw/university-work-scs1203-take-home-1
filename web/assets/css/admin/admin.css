@@ -25,3 +25,7 @@
 #prof-show-table tbody tr td:last-child {
     width: 90px
 }
+
+#course-show-table tr td:last-child {
+    width: 90px
+}
