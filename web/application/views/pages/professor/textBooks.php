@@ -9,62 +9,58 @@
     <br>
     <div>
         <div style="width:300px">
-            <form method="post" name="search-text-book-form">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="input-text-book-name" placeholder="Text Book Name">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" name="search-text-book-form" type="submit">Search</button>
-                    </div>
+            <?php echo form_open('/professor/textBooks', array(), array('filter-text-book-request' => true)) ?>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="input-filter-text-book-title" placeholder="Text Book Name">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" name="search-text-book-form" type="submit">Search</button>
                 </div>
+            </div>
             </form>
         </div>
         <div>
             <table class="custom-table" id="show-text-books">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Title</th>
                         <th>Publisher</th>
                         <th>Year</th>
-                        <th>Author</th>
+                        <th>Authors</th>
                         <th>Text Book For</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($textBooks as $book) {?>
                     <tr>
-                        <td>1</td>
-                        <td>Title</td>
-                        <td>Publisher</td>
-                        <td>Year</td>
-                        <td>Author</td>
-                        <td>Course</td>
                         <td>
-                            <p style="text-align:center;margin:0"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></p>
+                            <?php echo $book->title; ?>
+                        </td>
+                        <td>
+                            <?php echo $book->publisher; ?>
+                        </td>
+                        <td>
+                            <?php echo $book->year; ?>
+                        </td>
+                        <td>
+                            <?php echo $book->authors; ?>
+                        </td>
+                        <td>
+                            <?php echo $book->course; ?>
+                        </td>
+                        <td>
+                            <?php echo form_open('/professor/textBooks', array(), array('delete-text-book-request' => true)) ?>
+                            <input type="hidden" name="delete-text-book-course" value="<?php echo $book->course_id ?>" />
+                            <input type="hidden" name="delete-text-book-book_id" value="<?php echo $book->book_id; ?>" />
+                            <p style="text-align:center;margin:0">
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </p>
+                            </form>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Title</td>
-                        <td>Publisher</td>
-                        <td>Year</td>
-                        <td>Author</td>
-                        <td>Course</td>
-                        <td>
-                            <p style="text-align:center;margin:0"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Title</td>
-                        <td>Publisher</td>
-                        <td>Year</td>
-                        <td>Author</td>
-                        <td>Course</td>
-                        <td>
-                            <p style="text-align:center;margin:0"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></p>
-                        </td>
-                    </tr>
+                    <?php }?>
                 </tbody>
             </table>
         </div>
@@ -72,7 +68,8 @@
 
     <br>
 
-    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Add Text Books For Course</p>
+    <p class="sesction1">
+        <i class="fa fa-angle-double-right"></i>&nbsp;Add Text Books For Course</p>
 
     <br>
 
@@ -80,45 +77,45 @@
         <div class="row">
             <div class="col-md-4">
 
-                <form method="post" name="add-text-book-form">
-
-                    <div style="padding-bottom:10px">
-                        <label class="mr-sm-2" for="select-course">Course</label>
-                        <select class="custom-select" id="select-course" name="select-course">
-                        <option value="" selected>Choose Course</option>
-                        <option value="1">Course 1</option>
-                        <option value="2">Course 2</option>
-                        <option value="3">Course 3</option>
+                <?php echo form_open('/professor/textBooks', array(), array('add-text-book-request' => true)) ?>
+                <div style="padding-bottom:10px">
+                    <label class="mr-sm-2" for="select-course">Course</label>
+                    <select class="custom-select" id="select-course" name="select-course">
+                        <?php foreach ($courses as $course) {?>
+                        <option value="<?php echo $course->course_id; ?>">
+                            <?php echo $course->name; ?>
+                        </option>
+                        <?php }?>
                     </select>
-                    </div>
+                </div>
 
 
-                    <div style="padding-bottom:10px">
-                        <label class="mr-sm-2" for="select-book">Student</label>
-                        <select class="custom-select" oninput="selectInputBook(event)" id="select-book" name="select-book">
-                            <option value="" selected>Choose Book</option>
-                            <option value="1">Book 1</option>
-                            <option value="2">Book 2</option>
-                            <option value="3">Book 3</option>
-                        </select>
-                    </div>
+                <div style="padding-bottom:10px">
+                    <label class="mr-sm-2" for="select-book">Book</label>
+                    <select class="custom-select" oninput="selectInputBook(event)" id="select-book" name="select-book">
+                        <?php foreach ($books as $book) {?>
+                        <option value="<?php echo $book->book_id; ?>">
+                            <?php echo $book->title; ?>
+                        </option>
+                        <?php }?>
+                    </select>
+                </div>
 
-                    <p style="text-align:right">
-                        <button type="submit" name="add-text-book-form" class="btn btn-sm btn-warning">Add Text Book</button>
-                    </p>
+                <p style="text-align:right">
+                    <button type="submit" name="add-text-book-form" class="btn btn-sm btn-warning">Add Text Book</button>
+                </p>
 
                 </form>
-                <p class="error-text">Error</p>
             </div>
             <div class="col-md-8">
                 <div>
-                    <form method="post" name="search-books-form">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="input-book-name" placeholder="Book Name">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" name="search-books-form" type="submit">Search</button>
-                            </div>
+                    <?php echo form_open('/professor/textBooks', array(), array('filter-book-request' => true)) ?>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="input-filter-book-title" placeholder="Book Title">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" name="search-books-form" type="submit">Search</button>
                         </div>
+                    </div>
                     </form>
                 </div>
                 <div>
@@ -126,58 +123,36 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>ID</th>
                                 <th>Title</th>
-                                <th>Publisher | Year | Author</th>
-                                <th>Used For</th>
+                                <th>Details</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($books as $book) {?>
                             <tr>
                                 <td>
                                     <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
-                                        <input type="checkbox" onclick="selectBook(event)" class="custom-control-input book-check-box" id="std1" value="1" style="margin: 0">
-                                        <label class="custom-control-label" for="std1" style="margin: 0"></label>
+                                        <input type="checkbox" onclick="selectBook(event)" class="custom-control-input book-check-box" id="<?php echo $book->book_id; ?>"
+                                            value="<?php echo $book->book_id; ?>" style="margin: 0">
+                                        <label class="custom-control-label" for="<?php echo $book->book_id; ?>" style="margin: 0"></label>
                                     </div>
                                 </td>
-                                <td>ID</td>
-                                <td>Title</td>
-                                <td>Publisher | Year | Author</td>
-                                <td>Used For</td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
-                                        <input type="checkbox" onclick="selectBook(event)" class="custom-control-input book-check-box" id="std2" value="2" style="margin: 0">
-                                        <label class="custom-control-label" for="std2" style="margin: 0"></label>
-                                    </div>
+                                    <?php echo $book->title; ?>
                                 </td>
-                                <td>ID</td>
-                                <td>Title</td>
-                                <td>Publisher | Year | Author</td>
-                                <td>Used For</td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
-                                        <input type="checkbox" onclick="selectBook(event)" class="custom-control-input book-check-box" id="std3" value="3" style="margin: 0">
-                                        <label class="custom-control-label" for="std3" style="margin: 0"></label>
-                                    </div>
+                                    <?php echo $book->publisher . ', ' . $book->year; ?>
                                 </td>
-                                <td>ID</td>
-                                <td>Title</td>
-                                <td>Publisher | Year | Author</td>
-                                <td>Used For</td>
                             </tr>
-                            
+                            <?php }?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <script>
-        
+
         function catCheckBoxCheck(className) {
             var checkBox = document.getElementsByClassName(className);
             for (var y = 0; y < checkBox.length; y++) {
@@ -187,7 +162,7 @@
             }
         }
 
-        function selectBook(event){
+        function selectBook(event) {
             if (catCheckBoxCheck(event.target.className)) {
                 var checkBox = document.getElementsByClassName(event.target.className);
                 for (var y = 0; y < checkBox.length; y++) {
@@ -199,11 +174,11 @@
 
                 document.getElementById('select-book').value = event.target.value;
 
-            }else{
+            } else {
                 document.getElementById('select-book').value = "";
             }
         }
-        
+
         function selectInputBook(event) {
             var checkBox = document.getElementsByClassName('custom-control-input book-check-box');
             for (var y = 0; y < checkBox.length; y++) {
@@ -213,7 +188,7 @@
             }
             for (var y = 0; y < checkBox.length; y++) {
                 if (checkBox[y].value === event.target.value) {
-                    checkBox[y].checked = true;                          
+                    checkBox[y].checked = true;
                 }
             }
         }

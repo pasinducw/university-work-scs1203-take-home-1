@@ -18,7 +18,8 @@ class LabSessionsView extends Migration
                 section.section_id as section_id, section.year as year, section.semester as semester,
                 section.professor_id as professor_id,
                 lab_session.topic as topic, lab_session.start_time as start_time, lab_session.end_time as end_time,
-                lab_session.location as location, lab_session.conductor_id as conductor_id
+                lab_session.location as location, lab_session.conductor_id as conductor_id,
+                concat(conductor.first_name, ' ', conductor.last_name) as conductor_name
 
             FROM departments as department
             INNER JOIN courses as course ON (course.department_id = department.department_id)
@@ -28,6 +29,7 @@ class LabSessionsView extends Migration
                 lab_session.section_id = section.section_id AND
                 lab_session.semester = section.semester AND
                 lab_session.year = section.year)
+            LEFT JOIN students_view as conductor ON (conductor.student_id = lab_session.conductor_id)
         ");
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookCopiesTable extends Migration
+class CreateBookBorrowsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateBookCopiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_copies', function (Blueprint $table) {
-            $table->unsignedInteger('book_copy_id')->nullable(false)->autoIncrement();
+        Schema::create('book_borrows', function (Blueprint $table) {
             $table->string('book_id')->nullable(false);
-            $table->string('borrowed_student_id');
+            $table->string('student_id')->nullable(false);
+            $table->boolean('returned')->default(false);
 
-            $table->foreign('book_id', 'fk_book_copies_to_books')
+            $table->foreign('book_id', 'fk_book_borrows_to_books')
                 ->references('book_id')
                 ->on('books')
-                ->onDelete('restrict');
+                ->onDelete('cascade');
 
-            $table->foreign('borrowed_student_id', 'fk_book_copies_to_students')
+            $table->foreign('student_id', 'fk_book_borrows_to_students')
                 ->references('student_id')
                 ->on('students')
                 ->onDelete('restrict');
@@ -37,6 +37,6 @@ class CreateBookCopiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_copies');
+        Schema::dropIfExists('book_borrows');
     }
 }

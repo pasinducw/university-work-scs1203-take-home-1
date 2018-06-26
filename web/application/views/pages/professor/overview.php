@@ -47,6 +47,7 @@
             </div>
 
             <br>
+            <!--
             <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Text Books For Courses</p>
 
             <div class="container-fluid">
@@ -72,7 +73,7 @@
                         <a href="<?php echo $viewData['links']['change_text_books']; ?>" class="btn btn-secondary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i>&nbsp;Change Books For Courses</a>
                     </p>
                 </ul>
-            </div>
+            </div>-->
 
         </div>
         <div class="col-md-4">
@@ -80,11 +81,10 @@
             <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;My Books</p>
             <div class="container-fluid">
                     <ul class="myBook-details">
-                        <li><p>Book Name</p>
+                        <?php foreach ($books as $book) {?>
+                        <li><p><?php echo $book->title; ?></p>
                         </li>
-                        <li><p>Boon Name</p>
-                        </li>
-                        <li><p>Book Name</p></li>
+                        <?php }?>
                         <br>
                     </ul>
                 </div>

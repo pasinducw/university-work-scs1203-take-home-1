@@ -28,7 +28,7 @@ class Professor_model extends CI_Model
 
         $this->db->select('*');
         $this->db->from('professors_view');
-        $this->db->where('user_id', $user['user_id']);
+        $this->db->where('user_id', $user->user_id);
         $query = $this->db->get();
 
         $result = $query->row();
@@ -36,6 +36,17 @@ class Professor_model extends CI_Model
             throw new Exception('Invalid user id. Professor doesnt exist.');
         }
         return $result;
+    }
+
+    public function getAllProfessors($filter = '')
+    {
+        $this->db->select('*');
+        $this->db->from('professors_view');
+        $this->db->like('first_name', $filter);
+        $this->db->or_like('last_name', $filter);
+        $query = $this->db->get();
+
+        return $query->result();
     }
 
 }
