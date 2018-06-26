@@ -21,3 +21,7 @@
     background-color: rgb(202, 202, 202);
     padding: 3px 5px 3px 5px;
 }
+
+#prof-show-table tbody tr td:last-child {
+    width: 90px
+}
