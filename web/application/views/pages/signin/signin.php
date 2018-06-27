@@ -67,6 +67,7 @@
     </div>
   </dir>
   <script src="<?php echo base_url('assets/jquery.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/textFields/classie.js'); ?>"></script>
   <script>
 			(function() {
 				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim

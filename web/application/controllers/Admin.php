@@ -167,7 +167,8 @@ class Admin extends CI_Controller
             'view' => "pages/admin/courses",
             'viewData' => array(
                 'urls' => array(
-                    'editCourse' => "editCourse"
+                    'editCourse' => "editCourse",
+                    'cousePrereq' => "cousePrerequisities"
                 )
             )
         );
@@ -175,11 +176,28 @@ class Admin extends CI_Controller
         $this->load->view('templates/dashboard', $data);
     }
 
-    public function editCourse($courseID){
+    public function editCourse($courseID)
+    {
         $data = array(
             'navigationData' => getNavigationEntries('admin'),
             'view' => "pages/admin/edit/editCourse",
             'viewData' => array(
+                'urls' => array(
+                    'back_url' => "courses"
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function cousePrerequisities($courseID)
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/cousePrerequisities",
+            'viewData' => array(
+                'vd'=> $courseID,
                 'urls' => array(
                     'back_url' => "courses"
                 )
@@ -194,7 +212,42 @@ class Admin extends CI_Controller
         $data = array(
             'navigationData' => getNavigationEntries('admin'),
             'view' => "pages/admin/courseSections",
-            'viewData' => array()
+            'viewData' => array(
+                'urls' => array(
+                    'addCourseSection' => 'addCourseSections'
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function addCourseSections($courseID)
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/add/addCourseSections",
+            'viewData' => array(
+                'urls' => array(
+                    'editCourseSec' => "../editCourseSections/".$courseID,
+                    'back_url' => "../courseSections"
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function editCourseSections($courseID,$sectionID)
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/edit/editCourseSections",
+            'viewData' => array(
+                'urls' => array(
+                    'back_url' => "../../addCourseSections/".$courseID
+                )
+            )
         );
 
         $this->load->view('templates/dashboard', $data);

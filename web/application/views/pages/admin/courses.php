@@ -18,6 +18,7 @@
                 <th>Department</th>
                 <th>Creadit Hours</th>
                 <th>College</th>
+                <th>Prerequisities</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -28,6 +29,10 @@
                 <td>Department</td>
                 <td>20</td>
                 <td>College</td>
+                <td>
+                    advdRBA , RamsRJY
+                    <br><a href="<?php echo $viewData['urls']['cousePrereq'] ?>/345" class="btn btn-sm btn-primary" role="button"><i class="fa fa-plus"></i></a>
+                </td>
                 <td>
                     <a href="<?php echo $viewData['urls']['editCourse'] ?>/345" class="btn btn-sm btn-warning" role="button"><i class="fa fa-edit"></i></a>
                     <a href="" class="btn btn-sm btn-danger" role="button"><i class="fa fa-trash"></i></a>
