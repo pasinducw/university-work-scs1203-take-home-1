@@ -73,3 +73,53 @@
     background-color: #dddddd;
     padding: 3px 3px 3px 5px
 }
+
+.create-user-main-cont {
+    height: 510px;
+    position: relative;
+}
+
+.category-main-cont {
+    min-height: 200px;
+    max-width: 800px;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.category-main-cont .container-fluid,
+.category-main-cont .container-fluid .row,
+.category-main-cont .container-fluid .row .col-md-6,
+.category-main-cont .container-fluid .row .col-md-6 .button-cont {
+    height: 100%;
+}
+
+.category-main-cont .container-fluid .row,
+.category-main-cont .container-fluid .row .col-md-6,
+.category-main-cont .container-fluid .row .col-md-6 .button-cont {
+    min-height: 200px;
+}
+
+.category-main-cont .container-fluid .row .col-md-6 .button-cont {
+    padding: 10px;
+}
+
+.category-main-cont .container-fluid .row .col-md-6 .button-cont a button {
+    height: 180px;
+    width: 100%;
+}
+
+#emp-user-show-table tr th:nth-child(2) {
+    width: 90px
+}
+
+#emp-user-show-table tr th:nth-child(1),
+#student-user-show-table tr th:nth-child(1) {
+    width: 40px
+}
+
+#emp-user-show-table tr th:last-child {
+    width: 50px
+}

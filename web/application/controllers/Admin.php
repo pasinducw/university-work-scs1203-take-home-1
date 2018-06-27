@@ -356,8 +356,43 @@ class Admin extends CI_Controller
     {
         $data = array(
             'navigationData' => getNavigationEntries('admin'),
-            'view' => "pages/admin/createUser",
-            'viewData' => array()
+            'view' => "pages/admin/userCreation/createUser",
+            'viewData' => array(
+                'urls' => array(
+                    'adminUser' => "createUserAdmin",
+                    'studentUser' => "studentUser"
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function createUserAdmin()
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/userCreation/createUserAdmin",
+            'viewData' => array(
+                'urls' => array(
+                    'back_url' => "userCreation"
+                )
+            )
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function studentUser()
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('admin'),
+            'view' => "pages/admin/userCreation/studentUser",
+            'viewData' => array(
+                'urls' => array(
+                    'back_url' => "userCreation"
+                )
+            )
         );
 
         $this->load->view('templates/dashboard', $data);
