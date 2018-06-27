@@ -57,6 +57,11 @@ if (!function_exists('getNavigationEntries')) {
                 'url' => base_url('admin/companySession'),
                 'icon' => 'briefcase',
             ),
+            'companySessionManager' => array(
+                'name' => 'Company Sessions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manager',
+                'url' => base_url('admin/companySessionManager'),
+                'icon' => 'users',
+            ),
             'userCreation' => array(
                 'name' => 'User Creation',
                 'url' => base_url('admin/userCreation'),
