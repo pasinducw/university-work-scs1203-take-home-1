@@ -13,6 +13,15 @@
 
     <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Evaluations</p>
 
+    <form method="post" name="search-std-eval-from-std-name-form">
+        <div class="input-group mb-3" style="width:300px">
+            <input type="text" class="form-control" name="input-std-name" placeholder="Student Name">
+            <div class="input-group-append">
+                <button class="btn btn-primary" name="search-std-eval-from-std-name-form" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+
     <table class="custom-table" id="evaluation-show-table">
         <thead>
             <tr>
@@ -80,6 +89,7 @@
                         </div> 
                     </div>
                     <p style="text-align:center">
+                        <a href="<?php echo $viewData['urls']['back_url']; ?>" class="btn btn-sm btn-dark" role="button">Back</a>
                         <button type="submit" class="btn btn-sm btn-success" name="add-student-eval-form">
                             <i class="fa fa-plus"></i>&nbsp;Add Evalution
                         </button>

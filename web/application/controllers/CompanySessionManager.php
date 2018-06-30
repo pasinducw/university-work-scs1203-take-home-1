@@ -83,6 +83,7 @@ class CompanySessionManager extends CI_Controller
             'view' => "pages/manager/addStudentEvaluation",
             'viewData' => array(
                 'urls' => array(
+                    'back_url' => "../../studentEvaluation",
                     'edit_enrolment' => "editStudentEvaluation",
                 ),
             ),
