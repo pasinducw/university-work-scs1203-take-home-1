@@ -20,52 +20,61 @@
 </div> -->
 
 <div class="signin-back">
-  <dir class="signin-front">
-    <div class="container-fluid" style="height:100%">
-      <div class="row" style="height:100%">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 login-cont-out">
-          <div class="login-cont">
-            <h1 class="login-heading">Login</h4>
-            <?php echo form_open('/signin'); ?>
-            <p style="text-align:center">
-              <span class="input input--nao" style="margin-left:0;margin-right:0;font-weight:normal">
-                <input class="input__field input__field--nao" name="login-user-name" type="text" id="login-user-name" />
-                <label class="input__label input__label--nao" for="input-2">
-                  <span class="input__label-content input__label-content--nao"><i class="fa fa-user"></i>&nbsp;User Name</span>
-                </label>
-                <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                  <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
-                </svg>
-              </span>
-            </p>
-            <p style="text-align:center">
-              <span class="input input--nao" style="margin-left:0;margin-right:0">
-                <input class="input__field input__field--nao" name="login-user-password" type="password" id="login-user-password" />
-                <label class="input__label input__label--nao" for="input-2">
-                  <span class="input__label-content input__label-content--nao"><i class="fa fa-lock"></i>&nbsp;Password</span>
-                </label>
-                <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                  <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
-                </svg>
-              </span>
-            </p>
-            <div class="error-cont" id="login-error-cont">
-              <?php echo validation_errors(); ?>
-              
-                <?php echo isset($signin_error) ? '<p class="error-text">'.$signin_error.'</p>' : ''; ?>
-              
+  <div class="signin-back-inner">
+    <dir class="signin-front">
+      <div class="signin-front-inner">
+        <div class="container-fluid" style="height:100%">
+          <div class="row" style="height:100%">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 login-cont-out">
+              <div class="login-cont">
+                <div>
+                  <img src="<?php echo base_url('assets/img/logo_2.png') ?>" style="width:200px" class="img-resp" alt="">
+                  <br>
+                </div>
+                <!-- <h1 class="login-heading">Login</h4> -->
+                <?php echo form_open('/signin'); ?>
+                <p style="text-align:center">
+                  <span class="input input--nao" style="margin-left:0;margin-right:0;font-weight:normal">
+                    <input class="input__field input__field--nao" name="login-user-name" type="text" id="login-user-name" />
+                    <label class="input__label input__label--nao" for="input-2">
+                      <span class="input__label-content input__label-content--nao"><i class="fa fa-user"></i>&nbsp;User Name</span>
+                    </label>
+                    <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                      <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+                    </svg>
+                  </span>
+                </p>
+                <p style="text-align:center">
+                  <span class="input input--nao" style="margin-left:0;margin-right:0">
+                    <input class="input__field input__field--nao" name="login-user-password" type="password" id="login-user-password" />
+                    <label class="input__label input__label--nao" for="input-2">
+                      <span class="input__label-content input__label-content--nao"><i class="fa fa-lock"></i>&nbsp;Password</span>
+                    </label>
+                    <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                      <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+                    </svg>
+                  </span>
+                </p>
+                <div class="error-cont" id="login-error-cont">
+                  <?php echo validation_errors(); ?>
+                  
+                    <?php echo isset($signin_error) ? '<p class="error-text">'.$signin_error.'</p>' : ''; ?>
+                  
+                </div>
+                <p class="login-btn-cont">
+                  <button class="login-btn" type="submit" name="login-form">Log In</button>
+                </p>
+                </form>
+              </div>
             </div>
-            <p class="login-btn-cont">
-              <button class="login-btn" type="submit" name="login-form">Log In</button>
-            </p>
-            </form>
+            <div class="col-md-4"></div>
           </div>
         </div>
-        <div class="col-md-4"></div>
       </div>
-    </div>
-  </dir>
+      
+    </dir>
+  </div>
   <script src="<?php echo base_url('assets/jquery.js'); ?>"></script>
   <script src="<?php echo base_url('assets/textFields/classie.js'); ?>"></script>
   <script>

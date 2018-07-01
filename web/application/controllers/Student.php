@@ -26,6 +26,50 @@ class Student extends CI_Controller
         $this->load->view('templates/dashboard', $data);
     }
 
+    public function courses()
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('student'),
+            'view' => "pages/student/courses",
+            'viewData' => array()
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function companySessions()
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('student'),
+            'view' => "pages/student/companySession",
+            'viewData' => array()
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function library()
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('student'),
+            'view' => "pages/student/library",
+            'viewData' => array()
+        );
+
+        $this->load->view('templates/dashboard', $data);
+    }
+
+    public function grades()
+    {
+        $data = array(
+            'navigationData' => getNavigationEntries('student'),
+            'view' => "pages/student/grades",
+            'viewData' => array()
+        );
+
+        $this->load->view('templates/dashboard', $data);   
+    }
+
     public function profile()
     {
         $data = array(

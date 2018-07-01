@@ -67,14 +67,42 @@ body,
     min-height: 400px
 }
 
-.signin-front {
+.signin-back-inner {
     position: absolute;
     top: 2px;
     bottom: 2px;
     right: 10px;
     left: 10px;
-    background-image: url('../img/login_background.svg');
-    box-shadow: 0px 0px 20px 10px #000000
+    background-color: transparent;
+}
+
+.signin-front {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0px 0px 20px 10px #000000;
+    /* background-image: url('../img/login_background.svg'); */
+    background-image: url('../img/3674077.jpg');
+    /* The image used */
+    /* background-image: url("img_parallax.jpg"); */
+    /* Set a specific height */
+    /* height: 100%; */
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signin-front-inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.514)
 }
 
 .login-cont-out {
@@ -100,14 +128,14 @@ body,
 .login-btn {
     border: 0;
     width: 100%;
-    background-color: #1c1f71;
+    background-color: #353ac9;
     color: white;
     height: 30px;
     transition: 0.3s
 }
 
 .login-btn:hover {
-    background-color: #101249;
+    background-color: #191c6e;
     cursor: pointer;
 }
 
