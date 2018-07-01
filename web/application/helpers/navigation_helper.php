@@ -57,6 +57,11 @@ if (!function_exists('getNavigationEntries')) {
                 'url' => base_url('admin/companySession'),
                 'icon' => 'briefcase',
             ),
+            'companySessionManager' => array(
+                'name' => 'Company Sessions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manager',
+                'url' => base_url('admin/companySessionManager'),
+                'icon' => 'users',
+            ),
             'userCreation' => array(
                 'name' => 'User Creation',
                 'url' => base_url('admin/userCreation'),
@@ -118,18 +123,33 @@ if (!function_exists('getNavigationEntries')) {
                 'url' => base_url('student/overview'),
                 'icon' => 'clipboard'
             ),
+            'courses' => array(
+                'name' => 'Enroll for Course',
+                'url' => base_url('student/courses'),
+                'icon' => 'book-open'
+            ),
+            'companySessions' => array(
+                'name' => 'Company Sessions',
+                'url' => base_url('student/companySessions'),
+                'icon' => 'briefcase'
+            ),
+            'library' => array(
+                'name' => 'Library',
+                'url' => base_url('student/library'),
+                'icon' => 'book'
+            ),
+            'grades' => array(
+                'name' => 'Grades',
+                'url' => base_url('student/grades'),
+                'icon' => 'award'
+            ),
             'profile' => array(
                 'name' => 'Profile',
                 'url' => base_url('student/profile'),
-                'icon' => 'user',
+                'icon' => 'user'
             )
         );
 
-        $entries['courses'] = array(
-            'name' => 'Enroll for Course',
-            'url' => base_url('student/courses'),
-            'icon' => 'book-open',
-        );
         return $entries;
     }
 

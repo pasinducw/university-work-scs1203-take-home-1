@@ -1,0 +1,55 @@
+.custom-table {
+    text-align: center;
+}
+
+#borrowed-book-show-table .return-date-ended,
+#books-basic-detail-show-table .book-not-available {
+    background-color: rgba(165, 42, 42, 0.342);
+}
+
+.now-comp-enroll {
+    background-color: rgba(0, 190, 16, 0.226);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.now-comp-enroll ul {
+    margin: 0;
+}
+
+.courses-enroled {
+    background-color: rgba(0, 190, 16, 0.226);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.courses-enroled ul {
+    margin: 0;
+}
+
+.grade span {
+    background-color: rgba(0, 136, 45, 0.466);
+    padding: 0 3px 0 3px;
+}
+
+#student-overview .cont {
+    padding: 10px 0 15px 0;
+    height: 100%;
+}
+
+#student-overview .cont .cont-inner {
+    background-color: rgb(233, 233, 233);
+    /* min-height: 200px; */
+    height: 100%;
+}
+
+#student-overview .cont .cont-inner .heading {
+    background-color: rgb(207, 207, 207);
+    margin: 0;
+    padding: 3px;
+    text-align: center;
+}
+
+#student-overview .cont .cont-inner .content {
+    padding: 5px;
+}

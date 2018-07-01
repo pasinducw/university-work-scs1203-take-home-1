@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="<?php echo base_url('assets/css/common/table.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/all.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/common/common.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/admin/admin.css') ?>">
+
+<div style="padding-top:20px;padding-bottom:30px">
+
+    <h2 class="heading1">Students</h2>
+    <br>
+
+    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Student Details</p>
+
+
+    <table class="custom-table" id="students-show-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Contact No</th>
+                <th>Year</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>546</td>
+                <td>tsrb</td>
+                <td>fbga</td>
+                <td>thjh</td>
+                <td>fmm</td>
+                <td>
+                    <a href="<?php echo $viewData['urls']['moreStudent']; ?>/345" class="btn btn-sm btn-primary" role="button"><i class="fa fa-eye"></i></a>
+                    <a href="<?php echo $viewData['urls']['editStudent']; ?>/365" class="btn btn-sm btn-warning" role="button"><i class="fa fa-edit"></i></a>
+                    <a href="" class="btn btn-sm btn-danger" role="button"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>546</td>
+                <td>tsrb</td>
+                <td>fbga</td>
+                <td>thjh</td>
+                <td>fmm</td>
+                <td>
+                    <a href="<?php echo $viewData['urls']['moreStudent']; ?>/345" class="btn btn-sm btn-primary" role="button"><i class="fa fa-eye"></i></a>
+                    <a href="<?php echo $viewData['urls']['editStudent']; ?>/365" class="btn btn-sm btn-warning" role="button"><i class="fa fa-edit"></i></a>
+                    <a href="" class="btn btn-sm btn-danger" role="button"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <p class="sesction1"><i class="fa fa-angle-double-right"></i>&nbsp;Add Student</p>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+
+                <form method="post" name="add-student-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="input-first-name">Student First Name</label>
+                                <input type="text" class="form-control" id="input-first-name" name="input-first-name" aria-describedby="input-first-nameHelp" placeholder="First Name">
+                                <small id="input-first-nameHelp" class="form-text text-muted">Enter first name.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="input-last-name">Last Name Name</label>
+                                <input type="text" class="form-control" id="input-last-name" name="input-last-name" aria-describedby="input-last-nameHelp" placeholder="Last Name">
+                                <small id="input-last-nameHelp" class="form-text text-muted">Enter last name.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="input-address">Student Address</label>
+                                <input type="text" class="form-control" id="input-address" name="input-address" aria-describedby="input-addressHelp" placeholder="Address">
+                                <small id="input-addressHelp" class="form-text text-muted">Enter address.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="input-contact-no">Contact No</label>
+                                <input type="text" class="form-control" id="input-contact-no" name="input-contact-no" aria-describedby="input-contact-noHelp" placeholder="Contact No">
+                                <small id="input-contact-noHelp" class="form-text text-muted">Enter contact no</small>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align:center">
+                        <button class="btn btn-sm btn-success" type="submit" name="add-student-form">
+                            <i class="fa fa-plus"></i>&nbsp;Add Student
+                        </button>
+                    </p>
+                </form>
+                <p class="error-text">
+                    error
+                </p>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+</div>

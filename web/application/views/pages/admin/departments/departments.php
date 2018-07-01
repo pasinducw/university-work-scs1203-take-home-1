@@ -39,12 +39,12 @@
                         <?php echo $department->phone; ?>
                     </td>
                     <td>
-                        <?php echo $department->department_head_name; ?> 
+                        <?php echo $department->department_head_name; ?>
                     </td>
                     <td>
                         <?php echo form_open('/admin/departments', array(), array("delete-department-request" => true)); ?>
                         <input type="hidden" name="delete-department-id" value="<?php echo $department->department_id; ?>" />
-                        <a href="<?php echo $viewData['urls']['editDept'].'/'. $department->department_id; ?>" class="btn btn-sm btn-warning" role="button">
+                        <a href="<?php echo $viewData['urls']['editDept'] . '/' . $department->department_id; ?>" class="btn btn-sm btn-warning" role="button">
                             <i class="fa fa-edit"></i>
                         </a>
 
@@ -102,49 +102,5 @@
         </p>
         </form>
     </div>
-
-    <script>
-
-        function catCheckBoxCheck(className) {
-            var checkBox = document.getElementsByClassName(className);
-            for (var y = 0; y < checkBox.length; y++) {
-                if (checkBox[y].checked) {
-                    return true;
-                }
-            }
-        }
-
-        function selectProf(event) {
-            if (catCheckBoxCheck(event.target.className)) {
-                var checkBox = document.getElementsByClassName(event.target.className);
-                for (var y = 0; y < checkBox.length; y++) {
-                    if (checkBox[y].checked) {
-                        checkBox[y].checked = false;
-                    }
-                }
-                event.target.checked = true;
-
-                document.getElementById('select-prof').value = event.target.value;
-
-            } else {
-                document.getElementById('select-prof').value = "";
-            }
-        }
-
-        function selectInputprof(event) {
-            var checkBox = document.getElementsByClassName('custom-control-input prof-check-box');
-            for (var y = 0; y < checkBox.length; y++) {
-                if (checkBox[y].checked) {
-                    checkBox[y].checked = false;
-                }
-            }
-            for (var y = 0; y < checkBox.length; y++) {
-                if (checkBox[y].value === event.target.value) {
-                    checkBox[y].checked = true;
-                }
-            }
-        }
-
-    </script>
 
 </div>
