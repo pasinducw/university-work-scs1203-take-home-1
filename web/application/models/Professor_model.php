@@ -49,4 +49,14 @@ class Professor_model extends CI_Model
         return $query->result();
     }
 
+    public function getProfessorsOfDepartment($departmentId)
+    {
+        $this->db->select('*');
+        $this->db->from('professors_view');
+        $this->db->where('department_id', $departmentId);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
 }
