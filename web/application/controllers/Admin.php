@@ -92,7 +92,7 @@ class Admin extends CI_Controller
             $phone = $this->input->post('input-dept-phone');
             $departmentHeadId = $this->input->post('select-prof');
 
-            $this->department_model->updateDepartment($name, $location, $phone, $departmentHeadId);
+            $this->department_model->updateDepartment($departmentId, $name, $location, $phone, $departmentHeadId);
         }
 
         $data = array(

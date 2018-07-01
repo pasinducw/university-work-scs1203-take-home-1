@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <?php echo form_open('/admin/editDepartments/' . $department->department_id); ?>
         <div class="row">
-            <div class="col-md-1"></div> 
+            <div class="col-md-1"></div>
             <div class="col-md-6">
                 <form method="post" name="edit-department-form">
 
@@ -21,15 +21,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="input-dept-id">Department ID</label>
-                                <input type="text" class="form-control" id="input-dept-id" 
-                                name="input-dept-id" aria-describedby="input-dept-idHelp" 
+                                <input type="text" class="form-control" id="input-dept-id"
+                                name="input-dept-id" aria-describedby="input-dept-idHelp"
                                 placeholder="Department ID" value="<?php echo $department->department_id; ?>" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="input-dept-name">Department Name</label>
-                                <input type="text" class="form-control" id="input-dept-name" name="input-dept-name" aria-describedby="input-dept-nameeHelp" 
+                                <input type="text" class="form-control" id="input-dept-name" name="input-dept-name" aria-describedby="input-dept-nameeHelp"
                                 placeholder="Department Name" value="<?php echo $department->name; ?>" >
                                 <small id="input-dept-nameHelp" class="form-text text-muted">Enter department name</small>
                             </div>
@@ -40,7 +40,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="input-dept-location">Department Location</label>
-                                <input type="text" class="form-control" id="input-dept-location" name="input-dept-location" aria-describedby="input-dept-locationHelp" 
+                                <input type="text" class="form-control" id="input-dept-location" name="input-dept-location" aria-describedby="input-dept-locationHelp"
                                 placeholder="Department Location" value="<?php echo $department->location; ?>">
                                 <small id="input-dept-locationHelp" class="form-text text-muted">Enter department location</small>
                             </div>
@@ -60,16 +60,16 @@
                             <div style="padding-bottom:10px">
                                 <label class="mr-sm-2" for="select-prof">Head of Department</label>
                                 <select class="custom-select" oninput="selectInputprof(event)" id="select-prof" name="select-prof">
-                                    <?php foreach($professors as $professor){ ?>
+                                    <?php foreach ($professors as $professor) {?>
                                     <option value="<?php echo $professor->employee_id; ?>">
                                     <?php echo $professor->first_name . ' ' . $professor->last_name; ?>
                                     </option>
-                                    <?php } ?>
+                                    <?php }?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            
+
                         </div>
                     </div>
                     <p style="text-align:center">
@@ -78,7 +78,7 @@
                     </p>
                 </form>
                 <p class="error-text">
-                    Error
+                <?php echo validation_errors(); ?>
                 </p>
             </div>
             <div class="col-md-4">
@@ -97,10 +97,11 @@
                         <tr>
                             <th></th>
                             <th>Name</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($professors as $professor){?> 
+                        <?php foreach ($professors as $professor) {?>
                         <tr>
                             <td>
                                 <div class="custom-control custom-checkbox" style="padding:3px 5px 3px 5px">
@@ -110,6 +111,7 @@
                             </td>
 
                             <td><?php echo $professor->first_name . ' ' . $professor->last_name; ?></td>
+                            <td></td>
                         </tr>
                         <?php }?>
                     </tbody>
@@ -117,10 +119,10 @@
             </div>
             <div class="col-md-1"></div>
         </div>
-        
-    </div> 
+
+    </div>
     <script>
-        
+
         function catCheckBoxCheck(className) {
             var checkBox = document.getElementsByClassName(className);
             for (var y = 0; y < checkBox.length; y++) {
@@ -146,7 +148,7 @@
                 document.getElementById('select-prof').value = "";
             }
         }
-        
+
         function selectInputprof(event) {
             var checkBox = document.getElementsByClassName('custom-control-input prof-check-box');
             for (var y = 0; y < checkBox.length; y++) {
@@ -156,7 +158,7 @@
             }
             for (var y = 0; y < checkBox.length; y++) {
                 if (checkBox[y].value === event.target.value) {
-                    checkBox[y].checked = true;                          
+                    checkBox[y].checked = true;
                 }
             }
         }

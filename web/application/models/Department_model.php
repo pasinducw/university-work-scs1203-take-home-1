@@ -49,7 +49,6 @@ class Department_model extends CI_Model
             UPDATE departments 
             SET name = ?, location = ?, phone = ?, department_head_id = ?
             WHERE department_id = ?
-            (?, ?, ?, ?, ?, ?)
         ';
         $this->db->query($sql, array($name, $location, $phone, $departmentHeadId, $departmentId));
     }
